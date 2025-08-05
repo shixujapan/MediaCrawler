@@ -37,6 +37,21 @@ class BiliStoreFactory:
             raise ValueError("[BiliStoreFactory.create_store] Invalid save option only supported csv or db or json or sqlite ...")
         return store_class()
 
+async def update_bilibili_video_v2(video_item: Dict):
+    save_content_item = {
+        "bvid": video_item.get("bvid"),
+        "title": video_item.get("title"),
+        "author": video_item.get("owner", {}).get("name"),
+        "pubdate": video_item.get("pubdate"),
+        "duration": video_item.get("duration"),
+        "dimension": video_item.get("dimension"),
+        "stat": video_item.get("stat"),
+        "cover_url": video_item.get("pic"),
+        "desc": video_item.get("desc"),
+        "ugc_reason": video_item.get("ugc_season", {}),
+    }
+    utils.logger.info(f"[store.bilibili.update_bilibili_video] bilibili video id:{video_item.get('bvid')}, title:{save_content_item.get('title')}")
+    await BiliStoreFactory.create_store().store_content(content_item=save_content_item)
 
 async def update_bilibili_video(video_item: Dict):
     video_item_view: Dict = video_item.get("View")
@@ -87,6 +102,11 @@ async def update_up_info(video_item: Dict):
     utils.logger.info(f"[store.bilibili.update_up_info] bilibili user_id:{video_item_card.get('mid')}")
     await BiliStoreFactory.create_store().store_creator(creator=saver_up_info)
 
+async def batch_update_bilibili_video_tags(video_tags: List[Dict]):
+    if not video_tags:
+        return
+    for video_tag in video_tags:
+        await BiliStoreFactory.create_store().store_video_tag(video_tag=video_tag)
 
 async def batch_update_bilibili_video_comments(video_id: str, comments: List[Dict]):
     if not comments:

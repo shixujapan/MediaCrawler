@@ -160,6 +160,31 @@ class BilibiliClient(AbstractApiClient):
             "pubtime_end_s": pubtime_end_s
         }
         return await self.get(uri, post_data)
+    
+    async def get_video_tags(self, bvid: str) -> List[str]:
+        """
+        获取视频标签
+        :param bvid: 视频的 bvid
+        :return: 视频标签列表
+        """
+        uri = "/x/tag/archive/tags"
+        params = {"bvid": bvid}
+        return await self.get(uri, params, enable_params_sign=False)
+        
+    async def get_video_info_v2(self, bvid: Union[str, None] = None) -> Dict:
+        """
+        Bilibli web video detail api, aid 和 bvid任选一个参数
+        :param aid: 稿件avid
+        :param bvid: 稿件bvid
+        :return:
+        """
+        if not bvid:
+            raise ValueError("请提供 bvid 参数")
+
+        uri = "/x/web-interface/view"
+        params = dict()
+        params.update({"bvid": bvid})
+        return await self.get(uri, params, enable_params_sign=False)
 
     async def get_video_info(self, aid: Union[int, None] = None, bvid: Union[str, None] = None) -> Dict:
         """

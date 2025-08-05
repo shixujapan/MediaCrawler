@@ -353,6 +353,17 @@ class BiliJsonStoreImplement(AbstractStore):
 
         await self.save_data_to_json(save_item=dynamic_item, store_type="dynamics")
 
+    async def store_video_tag(self, video_tag: Dict):
+        """
+        Bilibili video tag JSON storage implementation
+        Args:
+            video_tag: video tag item dict
+
+        Returns:
+
+        """
+        await self.save_data_to_json(save_item=video_tag, store_type="video_tags")
+
 
 class BiliSqliteStoreImplement(AbstractStore):
     async def store_content(self, content_item: Dict):

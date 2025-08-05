@@ -342,13 +342,37 @@ class BilibiliCrawler(AbstractCrawler):
         ps = 30
         pn = 1
         while True:
+            import json
             result = await self.bili_client.get_creator_videos(creator_id, pn, ps)
             video_bvids_list = [video["bvid"] for video in result["list"]["vlist"]]
-            await self.get_specified_videos(video_bvids_list)
+            # await self.get_specified_videos(video_bvids_list)
+            await self.get_specified_videos_v2(video_bvids_list)
             if int(result["page"]["count"]) <= pn * ps:
                 break
             await asyncio.sleep(random.random())
             pn += 1
+
+    async def get_specified_videos_v2(self, bvids_list: List[str]):
+        """
+        get specified videos info
+        :return:
+        """
+        semaphore = asyncio.Semaphore(config.MAX_CONCURRENCY_NUM)
+        task_list = [self.get_video_info_task_v2(bvid=video_id, semaphore=semaphore) for video_id in bvids_list]
+        video_details = await asyncio.gather(*task_list)
+        video_aids_list = []
+        for video_detail in video_details:
+            if video_detail is not None:
+                video_aid: str = video_detail.get("aid")
+                if video_aid:
+                    video_aids_list.append(video_aid)
+                await bilibili_store.update_bilibili_video_v2(video_detail)
+
+                # TODO: Support updating UP info and fetching video details
+                # await bilibili_store.update_up_info(video_detail)
+                # await self.get_bilibili_video(video_detail, semaphore)
+        await self.batch_get_video_comments(video_aids_list)
+        await self.batch_get_video_tags(bvids_list)
 
     async def get_specified_videos(self, bvids_list: List[str]):
         """
@@ -369,6 +393,58 @@ class BilibiliCrawler(AbstractCrawler):
                 await bilibili_store.update_up_info(video_detail)
                 await self.get_bilibili_video(video_detail, semaphore)
         await self.batch_get_video_comments(video_aids_list)
+
+    async def batch_get_video_tags(self, bvids_list: List[str]):
+        """
+        batch get video tags
+        :param bvids_list:
+        :return:
+        """
+        semaphore = asyncio.Semaphore(config.MAX_CONCURRENCY_NUM)
+        task_list = [self.get_video_tags_task(bvid=bvid, semaphore=semaphore) for bvid in bvids_list]
+        video_tags = await asyncio.gather(*task_list)
+
+        await bilibili_store.batch_update_bilibili_video_tags(video_tags)
+
+    async def get_video_tags_task(self, bvid: int, semaphore: asyncio.Semaphore) -> Optional[Dict]:
+        """
+        Get video tags task
+        :param bvid:
+        :param semaphore:
+        :return:
+        """
+        async with semaphore:
+            try:
+                tags = await self.bili_client.get_video_tags(bvid=bvid)
+                return {
+                    "bvid": bvid,
+                    "tags": [tag.get("tag_name")  for tag in tags],
+                }
+            except DataFetchError as ex:
+                utils.logger.error(f"[BilibiliCrawler.get_video_tags_task] Get video tags error: {ex}")
+                return None
+            except KeyError as ex:
+                utils.logger.error(f"[BilibiliCrawler.get_video_tags_task] have not fund tags from :{bvid}, err: {ex}")
+                return None
+
+    async def get_video_info_task_v2(self, bvid: str, semaphore: asyncio.Semaphore) -> Optional[Dict]:
+        """
+        Get video detail task
+        :param aid:
+        :param bvid:
+        :param semaphore:
+        :return:
+        """
+        async with semaphore:
+            try:
+                result = await self.bili_client.get_video_info_v2(bvid=bvid)
+                return result
+            except DataFetchError as ex:
+                utils.logger.error(f"[BilibiliCrawler.get_video_info_task] Get video detail error: {ex}")
+                return None
+            except KeyError as ex:
+                utils.logger.error(f"[BilibiliCrawler.get_video_info_task] have not fund note detail video_id:{bvid}, err: {ex}")
+                return None
 
     async def get_video_info_task(self, aid: int, bvid: str, semaphore: asyncio.Semaphore) -> Optional[Dict]:
         """
