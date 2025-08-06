@@ -1,0 +1,212 @@
+[
+    {
+        "order": 0,
+        "name": "uuid",
+        "is_enabled": true
+    },
+    {
+        "order": 1,
+        "name": "source_id",
+        "is_enabled": true
+    },
+    {
+        "order": 2,
+        "name": "视频原标题",
+        "is_enabled": true
+    },
+    {
+        "order": 3,
+        "name": "发布者",
+        "is_enabled": true
+    },
+    {
+        "order": 4,
+        "name": "发布平台",
+        "is_enabled": true
+    },
+    {
+        "order": 5,
+        "name": "发布日期",
+        "is_enabled": true
+    },
+    {
+        "order": 6,
+        "name": "发布时间",
+        "is_enabled": false
+    },
+    {
+        "order": 7,
+        "name": "视频时长",
+        "is_enabled": false
+    },
+    {
+        "order": 8,
+        "name": "分辨率",
+        "is_enabled": false
+    },
+    {
+        "order": 9,
+        "name": "内容类型",
+        "is_enabled": true
+    },
+    {
+        "order": 10,
+        "name": "时代背景",
+        "is_enabled": true
+    },
+    {
+        "order": 11,
+        "name": "内容主题",
+        "is_enabled": true
+    },
+    {
+        "order": 12,
+        "name": "内容概述",
+        "is_enabled": true
+    },
+    {
+        "order": 13,
+        "name": "导演",
+        "is_enabled": true
+    },
+    {
+        "order": 14,
+        "name": "主演",
+        "is_enabled": true
+    },
+    {
+        "order": 15,
+        "name": "配角/嘉宾",
+        "is_enabled": true
+    },
+    {
+        "order": 16,
+        "name": "编剧",
+        "is_enabled": false
+    },
+    {
+        "order": 17,
+        "name": "制作团队/机构",
+        "is_enabled": false
+    },
+    {
+        "order": 18,
+        "name": "特邀合作方",
+        "is_enabled": true
+    },
+    {
+        "order": 19,
+        "name": "妆造风格",
+        "is_enabled": false
+    },
+    {
+        "order": 20,
+        "name": "BGM",
+        "is_enabled": false
+    },
+    {
+        "order": 21,
+        "name": "热门台词与场景",
+        "is_enabled": false
+    },
+    {
+        "order": 22,
+        "name": "关键帧截图",
+        "is_enabled": false
+    },
+    {
+        "order": 23,
+        "name": "分辨率",
+        "is_enabled": true
+    },
+    {
+        "order": 24,
+        "name": "视频比例",
+        "is_enabled": true
+    },
+    {
+        "order": 25,
+        "name": "精彩片段时间戳",
+        "is_enabled": false
+    },
+    {
+        "order": 26,
+        "name": "分享链接",
+        "is_enabled": true
+    },
+    {
+        "order": 27,
+        "name": "受众分类",
+        "is_enabled": false
+    },
+    {
+        "order": 28,
+        "name": "观众反馈亮点",
+        "is_enabled": false
+    },
+    {
+        "order": 29,
+        "name": "热门评论关键词",
+        "is_enabled": false
+    },
+    {
+        "order": 30,
+        "name": "关联视频/系列",
+        "is_enabled": true
+    },
+    {
+        "order": 31,
+        "name": "拍摄花絮或幕后",
+        "is_enabled": false
+    },
+    {
+        "order": 32,
+        "name": "节日/活动相关",
+        "is_enabled": false
+    },
+    {
+        "order": 33,
+        "name": "相关资源/灵感来源",
+        "is_enabled": false
+    },
+    {
+        "order": 34,
+        "name": "播放量/浏览数",
+        "is_enabled": true
+    },
+    {
+        "order": 35,
+        "name": "点赞数",
+        "is_enabled": true
+    },
+    {
+        "order": 36,
+        "name": "评论数",
+        "is_enabled": true
+    },
+    {
+        "order": 37,
+        "name": "转发数",
+        "is_enabled": true
+    },
+    {
+        "order": 38,
+        "name": "收藏数",
+        "is_enabled": true
+    },
+    {
+        "order": 39,
+        "name": "关联推广信息",
+        "is_enabled": false
+    },
+    {
+        "order": 40,
+        "name": "封面图",
+        "is_enabled": true
+    },
+    {
+        "order": 41,
+        "name": "关键词",
+        "is_enabled": true
+    }
+]

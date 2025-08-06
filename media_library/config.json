@@ -1,0 +1,80 @@
+{
+    "fields": {
+        "unique_video_id": {
+            "function": "generate_unique_video_id",
+            "params": ["title", "author", "platform", "pubdate"]
+        },
+        "01_视频原标题": {
+            "function": "direct",
+            "params": ["title"]
+        },
+        "02_发布者": {
+            "function": "direct",
+            "params": ["author"]
+        },
+        "03_发布平台": {
+            "function": "direct",
+            "params": ["platform"]
+        },
+        "04_发布日期": {
+            "function": "get_date",
+            "params": ["pubdate"]
+        },
+        "05_发布时间": {
+            "function": "get_time",
+            "params": ["pubdate"]
+        },
+        "06_视频时长": {
+            "function": "format_duration",
+            "params": ["duration"]
+        },
+        "21_分辨率": {
+            "function": "get_resolution",
+            "params": ["dimension"]
+        },
+        "22_视频比例": {
+            "function": "get_aspect_ratio",
+            "params": ["dimension"]
+        },
+        "32_播放量/浏览数": {
+            "function": "direct",
+            "params": ["view"]
+        },
+        "24_分享链接": {
+            "function": "get_share_url",
+            "params": ["bvid"]
+        },
+        "33_点赞数": {
+            "function": "direct",
+            "params": ["like"]
+        },
+        "34_评论数": {
+            "function": "direct",
+            "params": ["reply"]
+        },
+        "35_转发数": {
+            "function": "direct",
+            "params": ["share"]
+        },
+        "36_收藏数": {
+            "function": "direct",
+            "params": ["favorite"]
+        },
+        "38_关键词": {
+            "function": "get_tags",
+            "params": ["tags"]
+        },
+        "39_封面图": {
+            "function": "direct",
+            "params": ["cover_url"]
+        },
+        "10_内容概述": {
+            "function": "direct",
+            "params": ["desc"]
+        },
+        "28_关联视频/系列": {
+            "function": "get_ugc_season",
+            "params": ["ugc_season"]
+        }
+    }
+}
