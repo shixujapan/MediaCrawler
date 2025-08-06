@@ -1,13 +1,13 @@
 from processor import BaseProcessor
-
+from typing import Optional
 class BilibiliProcessor(BaseProcessor):
-    def __init__(self, config_file: str):
-        super().__init__(config_file)
+    def __init__(self):
+        super().__init__()
 
-    def process_field(self, rule, video):
+    def process_field(self, rule, video) -> Optional[str]:
         """Processes a field based on config.json rules."""
         func_map = {
-            "generate_unique_video_id": self.generate_unique_video_id,
+            "generate_uuid": self.generate_uuid,
             "get_date": self.get_date,
             "get_time": self.get_time,
             "format_duration": self.format_duration,
@@ -16,7 +16,8 @@ class BilibiliProcessor(BaseProcessor):
             "get_share_url": self.get_share_url,
             "get_tags": self.get_tags,
             "direct": lambda *args: args[0],  # Directly return the first argument
-            "get_ugc_season": self.get_ugc_season
+            "get_ugc_reason": self.get_ugc_reason,
+            "filter_description": self.filter_description
         }
 
         func_name = rule["function"]

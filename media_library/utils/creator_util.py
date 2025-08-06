@@ -10,7 +10,6 @@ def find_latest_dated_file(folder_path: str, prefix: str) -> str:
     latest_date = None
 
     for file in folder.glob(f"{prefix}*.json"):
-        print(file)
         match = pattern.match(file.name)
         if match:
             try:

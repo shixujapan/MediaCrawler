@@ -2,39 +2,34 @@ import json
 import math
 from datetime import datetime
 import hashlib
+from pathlib import Path
+import os
+from abc import ABC, abstractmethod
+from typing import Optional
 
-class BaseProcessor:
+class BaseProcessor(ABC):
     """Processes video metadata dynamically based on config.json rules."""
 
-    def __init__(self, config_file):
-        with open(config_file, "r", encoding="utf-8") as file:
+    def __init__(self):
+        current_file = Path(__file__).resolve()
+        parent_folder = current_file.parent
+
+        source_folder = str(parent_folder).replace("processor", "")
+
+        with open(os.path.join(source_folder, "processor_config.json"), "r", encoding="utf-8") as file:
             self.processing_rules = json.load(file)
 
-    # def process_field(self, rule, video):
-    #     """Processes a field based on config.json rules."""
-    #     func_map = {
-    #         "generate_unique_video_id": self.generate_unique_video_id,
-    #         "get_date": self.get_date,
-    #         "get_time": self.get_time,
-    #         "format_duration": self.format_duration,
-    #         "get_resolution": self.get_resolution,
-    #         "get_aspect_ratio": self.get_aspect_ratio,
-    #         "get_share_url": self.get_share_url,
-    #         "get_tags": self.get_tags,
-    #         "direct": lambda *args: args[0],  # Directly return the first argument
-    #         "get_ugc_season": self.get_ugc_season
-    #     }
-
-    #     func_name = rule["function"]
-    #     params = [getattr(video, param, None) for param in rule.get("params", [])]
-
-    #     if func_name in func_map:
-    #         return func_map[func_name](*params)
-
-    #     return None  # Return None for unknown functions
+    @abstractmethod
+    def process_field(self, rule, video) -> Optional[str]:
+        pass
 
     @staticmethod
-    def generate_unique_video_id(*args):
+    def filter_description(desc: str) -> str:
+        """Filters the video description."""
+        return "" if desc == "-" else desc
+
+    @staticmethod
+    def generate_uuid(*args):
         """Generates a unique identifier for the video."""
         input_string = "_".join(str(arg) for arg in args)
         return hashlib.md5(input_string.encode("utf-8")).hexdigest()[:8]
@@ -82,6 +77,8 @@ class BaseProcessor:
         return "#" + "#".join(tags) if tags else ""
     
     @staticmethod
-    def get_ugc_season(ugc_season):
-        """Returns the ugc_season infomation."""
-        return f"合集·{ugc_season['title']}\nhttps://space.bilibili.com/{ugc_season['mid']}/lists/{ugc_season['id']}?type=season"if ugc_season else ""
+    def get_ugc_reason(ugc_reason):
+        """Returns the ugc_reason information."""
+        return f"合集·{ugc_reason['title']}\nhttps://space.bilibili.com/{ugc_reason['mid']}/lists/{ugc_reason['id']}?type=season" if ugc_reason else ""
+    
+            
