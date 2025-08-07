@@ -21,6 +21,7 @@ from playwright.async_api import BrowserContext, Page
 import config
 from base.base_crawler import AbstractApiClient
 from tools import utils
+from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
 
 from .exception import DataFetchError
 from .graphql import KuaiShouGraphQL
@@ -44,6 +45,11 @@ class KuaiShouClient(AbstractApiClient):
         self.cookie_dict = cookie_dict
         self.graphql = KuaiShouGraphQL()
 
+    @retry(
+        stop=stop_after_attempt(5),
+        wait=wait_exponential(multiplier=1, min=1, max=10),
+        retry=retry_if_exception_type((httpx.ConnectError, httpx.RequestError, httpx.HTTPStatusError, DataFetchError))
+    )
     async def request(self, method, url, **kwargs) -> Any:
         async with httpx.AsyncClient(proxy=self.proxy) as client:
             response = await client.request(method, url, timeout=self.timeout, **kwargs)

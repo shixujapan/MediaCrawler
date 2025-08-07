@@ -14,7 +14,9 @@ import os
 import random
 import time
 from asyncio import Task
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional
+from tenacity import retry, retry_if_result, stop_after_attempt, wait_exponential, before_sleep_log, RetryError
+import logging
 
 from playwright.async_api import (
     BrowserContext,
@@ -36,7 +38,8 @@ from .client import KuaiShouClient
 from .exception import DataFetchError
 from .login import KuaishouLogin
 
-
+def should_retry_result(res: Optional[Dict]) -> bool:
+    return res is None or res.get("result") == 400002 or not res
 class KuaishouCrawler(AbstractCrawler):
     context_page: Page
     ks_client: KuaiShouClient
@@ -174,13 +177,24 @@ class KuaishouCrawler(AbstractCrawler):
                 await kuaishou_store.update_kuaishou_video(video_detail)
         await self.batch_get_video_comments(config.KS_SPECIFIED_ID_LIST)
 
+    @retry(
+        stop=stop_after_attempt(5),
+        wait=wait_exponential(multiplier=1, min=1, max=10),
+        retry=retry_if_result(should_retry_result),
+        before_sleep=before_sleep_log(utils.logger, logging.WARNING)
+    )
+    async def _get_video_info_with_retry(self, video_id: str) -> Optional[Dict]:
+        result = await self.ks_client.get_video_info(video_id)
+        return result
+
     async def get_video_info_task(
         self, video_id: str, semaphore: asyncio.Semaphore
     ) -> Optional[Dict]:
         """Get video detail task"""
         async with semaphore:
             try:
-                result = await self.ks_client.get_video_info(video_id)
+                # result = await self.ks_client.get_video_info(video_id)
+                result = await self._get_video_info_with_retry(video_id)
                 utils.logger.info(
                     f"[KuaishouCrawler.get_video_info_task] Get video_id:{video_id} info result: {result} ..."
                 )
@@ -189,11 +203,19 @@ class KuaishouCrawler(AbstractCrawler):
                 utils.logger.error(
                     f"[KuaishouCrawler.get_video_info_task] Get video detail error: {ex}"
                 )
+                self.failed_video_ids.add(video_id)
                 return None
             except KeyError as ex:
                 utils.logger.error(
                     f"[KuaishouCrawler.get_video_info_task] have not fund video detail video_id:{video_id}, err: {ex}"
                 )
+                self.failed_video_ids.add(video_id)
+                return None
+            except RetryError as ex:
+                utils.logger.error(
+                    f"[KuaishouCrawler.get_video_info_task] Get video detail retry error: {ex}"
+                )
+                self.failed_video_ids.add(video_id)
                 return None
 
     async def batch_get_video_comments(self, video_id_list: List[str]):
@@ -352,6 +374,8 @@ class KuaishouCrawler(AbstractCrawler):
         utils.logger.info(
             "[KuaiShouCrawler.get_creators_and_videos] Begin get kuaishou creators"
         )
+
+        self.failed_video_ids = set()  # Store video IDs that failed to fetch
         for user_id in config.KS_CREATOR_ID_LIST:
             # get creator detail info from web html content
             createor_info: Dict = await self.ks_client.get_creator_info(user_id=user_id)
@@ -369,6 +393,9 @@ class KuaishouCrawler(AbstractCrawler):
                 video_item.get("photo", {}).get("id") for video_item in all_video_list
             ]
             await self.batch_get_video_comments(video_ids)
+
+        if self.failed_video_ids:
+            utils.logger.warning(f"[KuaiShouCrawler.get_creators_and_videos] Failed to fetch video_ids: {self.failed_video_ids}")
 
     async def fetch_creator_video_detail(self, video_list: List[Dict]):
         """
