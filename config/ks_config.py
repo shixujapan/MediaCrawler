@@ -15,6 +15,6 @@ KS_SPECIFIED_ID_LIST = ["3xf8enb8dbj6uig", "3x6zz972bchmvqe"]
 
 # 指定快手用户ID列表
 KS_CREATOR_ID_LIST = [
-    "3x4sm73aye7jq7i",
+    "3xctcpqmgpbdm7u",
     # ........................
 ]

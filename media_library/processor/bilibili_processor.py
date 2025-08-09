@@ -1,29 +1,44 @@
 from processor import BaseProcessor
-from typing import Optional
 class BilibiliProcessor(BaseProcessor):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, platform: str = "bilibili"):
+        super().__init__(platform)
 
-    def process_field(self, rule, video) -> Optional[str]:
-        """Processes a field based on config.json rules."""
-        func_map = {
-            "generate_uuid": self.generate_uuid,
-            "get_date": self.get_date,
-            "get_time": self.get_time,
-            "format_duration": self.format_duration,
+    def register_functions(self) -> None:
+        self.func_map = {
+            **self.func_map,
             "get_resolution": self.get_resolution,
             "get_aspect_ratio": self.get_aspect_ratio,
-            "get_share_url": self.get_share_url,
-            "get_tags": self.get_tags,
-            "direct": lambda *args: args[0],  # Directly return the first argument
             "get_ugc_reason": self.get_ugc_reason,
             "filter_description": self.filter_description
         }
 
-        func_name = rule["function"]
-        params = [getattr(video, param, None) for param in rule.get("params", [])]
+    @staticmethod
+    def get_resolution(dimension):
+        """Returns the resolution (4K, 1080P, etc.)."""
+        if not dimension:
+            return ""
 
-        if func_name in func_map:
-            return func_map[func_name](*params)
+        height = dimension.get("height", 0)
+        return (
+            "4K" if height >= 2160 else
+            "2K" if height >= 1440 else
+            "1080P" if height >= 1080 else
+            "720P"
+        ) if height else ""
 
-        return None  # Return None for unknown functions
+    @staticmethod
+    def get_aspect_ratio(dimension):
+        """Returns the aspect ratio (16:9, 4:3, etc.)."""
+        import math
+        width, height = dimension.get("width", 0), dimension.get("height", 0)
+        return f"{width // math.gcd(width, height)}:{height // math.gcd(width, height)}" if width and height else ""
+    
+    @staticmethod
+    def get_share_url(source_id):
+        """Returns the share URL for a Bilibili video."""
+        return f"https://www.bilibili.com/video/{source_id}"
+
+    @staticmethod
+    def get_ugc_reason(ugc_reason):
+        """Returns the ugc_reason information."""
+        return f"合集·{ugc_reason['title']}\nhttps://space.bilibili.com/{ugc_reason['mid']}/lists/{ugc_reason['id']}?type=season" if ugc_reason else ""

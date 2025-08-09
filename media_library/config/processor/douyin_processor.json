@@ -1,0 +1,29 @@
+{
+    "fields": {
+        "导演": {
+            "function": "get_director",
+            "params": [
+                "cooperation_info",
+                "author"
+            ]
+        },
+        "BGM": {
+            "function": "direct",
+            "params": [
+                "music_download_url"
+            ]
+        },
+        "内容概述": {
+            "function": "direct",
+            "params": [
+                "desc"
+            ]
+        },
+        "关联视频/系列": {
+            "function": "get_mix_info",
+            "params": [
+                "mix_info"
+            ]
+        }
+    }
+}

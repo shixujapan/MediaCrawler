@@ -155,9 +155,16 @@ class DouYinCrawler(AbstractCrawler):
         semaphore = asyncio.Semaphore(config.MAX_CONCURRENCY_NUM)
         task_list = [self.get_aweme_detail(aweme_id=aweme_id, semaphore=semaphore) for aweme_id in config.DY_SPECIFIED_ID_LIST]
         aweme_details = await asyncio.gather(*task_list)
+        # import json, os
+
+        # target_file = os.path.join("/Users/xu.shi/Downloads/圻夏夏/测试数据集", "douyin_共创_合集_一般.json")
+        # with open(target_file, "w", encoding="utf-8") as f:
+        #     json.dump(aweme_details, f, ensure_ascii=False, indent=4)
+
         for aweme_detail in aweme_details:
             if aweme_detail is not None:
-                await douyin_store.update_douyin_aweme(aweme_item=aweme_detail)
+                # await douyin_store.update_douyin_aweme(aweme_item=aweme_detail)
+                await douyin_store.update_douyin_aweme_v2(aweme_item=aweme_detail)
                 await self.get_aweme_media(aweme_item=aweme_detail)
         await self.batch_get_note_comments(config.DY_SPECIFIED_ID_LIST)
 
@@ -230,7 +237,8 @@ class DouYinCrawler(AbstractCrawler):
         note_details = await asyncio.gather(*task_list)
         for aweme_item in note_details:
             if aweme_item is not None:
-                await douyin_store.update_douyin_aweme(aweme_item=aweme_item)
+                # await douyin_store.update_douyin_aweme(aweme_item=aweme_item)
+                await douyin_store.update_douyin_aweme_v2(aweme_item=aweme_item)
                 await self.get_aweme_media(aweme_item=aweme_item)
 
     async def create_douyin_client(self, httpx_proxy: Optional[str]) -> DouYinClient:

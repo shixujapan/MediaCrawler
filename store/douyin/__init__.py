@@ -140,6 +140,110 @@ def _extract_music_download_url(aweme_detail: Dict) -> str:
     music_url = play_url.get("uri", "")
     return music_url
 
+def _extract_cooperation_info(cooperation_info: Dict) -> Dict:
+    """
+    提取共创信息
+
+    Args:
+        cooperation_info (Dict): 共创信息
+
+    Returns:
+        Dict: 提取后的共创信息
+    """
+    return {
+        "co_creator_nums": cooperation_info.get("co_creator_nums"),
+        "co_creators": [
+            {
+                "nickname": co_creator.get("nickname"),
+                "role_id": co_creator.get("role_id"),
+                "role_tile": co_creator.get("role_title"),
+                "sec_uid": co_creator.get("sec_uid"),
+                "uid": co_creator.get("uid"),
+            } for co_creator in cooperation_info.get("co_creators", [])
+        ]
+    }
+
+def _extract_mix_info(mix_info: Dict) -> Dict:
+    """
+    提取合集信息
+
+    Args:
+        mix_info (Dict): 合集信息
+
+    Returns:
+        Dict: 提取后的合集信息
+    """
+    return {
+        "create_time": mix_info.get("create_time"),
+        "desc": mix_info.get("desc"),
+        "mix_id": mix_info.get("mix_id"),
+        "mix_name": mix_info.get("mix_name"),
+        "share_url": mix_info.get("share_info", {}).get("share_url", ""),
+        "update_time": mix_info.get("update_time")
+    }
+
+
+async def update_douyin_aweme_v2(aweme_item: Dict):
+    """
+    更新抖音短视频内容
+    Args:
+        aweme_item (Dict): 抖音短视频内容
+    短视频分为三类：
+        
+    共创/合集/一般
+    """
+    aweme_id = aweme_item.get("aweme_id")
+    user_info = aweme_item.get("author", {})
+    interact_info = aweme_item.get("statistics", {})
+    cooperation_info = aweme_item.get("cooperation_info", {})
+    mix_info = aweme_item.get("mix_info", {})
+    save_content_item = {
+        # source_id
+        "aweme_id": aweme_id, 
+        "aweme_type": str(aweme_item.get("aweme_type")),
+        "title": aweme_item.get("desc", ""),
+        "desc": aweme_item.get("desc", ""),
+        # pubdate
+        "create_time": aweme_item.get("create_time"),
+        # duration
+        "duration": aweme_item.get("duration", 0),
+        "user_id": user_info.get("uid"),
+        "sec_uid": user_info.get("sec_uid"),
+        "short_user_id": user_info.get("short_id"),
+        "user_unique_id": user_info.get("unique_id"),
+        "user_signature": user_info.get("signature"),
+        # author
+        "nickname": user_info.get("nickname"),
+        # directors -> cooperation_info (共创)
+        "cooperation_info": _extract_cooperation_info(cooperation_info),
+        # top_lines_key_scenes -> seo_info
+        "seo_info": aweme_item.get("seo_info", {}),
+        # linked_videos_and_series -> mix_info (mix_name/share_url)
+        "mix_info": _extract_mix_info(mix_info),
+        # video_tag
+        "video_tag": aweme_item.get("video_tag", []),
+        # suggest_words
+        "suggest_words": aweme_item.get("suggest_words", {}),
+        # text_extra
+        "text_extra": aweme_item.get("text_extra", []),
+        "avatar": user_info.get("avatar_thumb", {}).get("url_list", [""])[0],
+        "liked_count": str(interact_info.get("digg_count")),
+        "collected_count": str(interact_info.get("collect_count")),
+        "comment_count": str(interact_info.get("comment_count")),
+        "share_count": str(interact_info.get("share_count")),
+        "ip_location": aweme_item.get("ip_label", ""),
+        "last_modify_ts": utils.get_current_timestamp(),
+        "aweme_url": f"https://www.douyin.com/video/{aweme_id}",
+        "cover_url": _extract_content_cover_url(aweme_item),
+        "video_download_url": _extract_video_download_url(aweme_item),
+        # bgm
+        "music_download_url": _extract_music_download_url(aweme_item),
+        "note_download_url": ",".join(_extract_note_image_list(aweme_item)),
+        "source_keyword": source_keyword_var.get(),
+    }
+    utils.logger.info(f"[store.douyin.update_douyin_aweme] douyin aweme id:{aweme_id}, title:{save_content_item.get('title')}")
+    await DouyinStoreFactory.create_store().store_content(content_item=save_content_item)
+
 
 async def update_douyin_aweme(aweme_item: Dict):
     aweme_id = aweme_item.get("aweme_id")

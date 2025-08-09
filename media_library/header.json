@@ -102,7 +102,7 @@
     {
         "order": 20,
         "name": "BGM",
-        "is_enabled": false
+        "is_enabled": true
     },
     {
         "order": 21,

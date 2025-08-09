@@ -1,10 +1,12 @@
-from creator import BilibiliCreator,BaseCreator
-from processor import BilibiliProcessor, BaseProcessor
+from creator import BilibiliCreator,BaseCreator, DouyinCreator
+from processor import BilibiliProcessor, BaseProcessor, DouyinProcessor
 from pathlib import Path
 
 class CreatorFactory:
     CREATORS = {
-        "bilibili": BilibiliCreator
+        "bilibili": BilibiliCreator,
+        "douyin": DouyinCreator,
+
     }
 
     @staticmethod
@@ -16,7 +18,8 @@ class CreatorFactory:
     
 class ProcessorFactory:
     PROCESSORS = {
-        "bilibili": BilibiliProcessor
+        "bilibili": BilibiliProcessor,
+        "douyin": DouyinProcessor,
     }
 
     @staticmethod
@@ -43,7 +46,7 @@ def main(platform: str, save_data_option: str):
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument("--platform", type=str, choices=["xhs", "dy", "ks", "bilibili"], default="bilibili")
+    parser.add_argument("--platform", type=str, choices=["xhs", "douyin", "kuashou", "bilibili"], default="bilibili")
     parser.add_argument("--save_data_option", type=str, default="csv")
     args = parser.parse_args()
 

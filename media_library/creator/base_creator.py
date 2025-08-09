@@ -29,7 +29,7 @@ class BaseCreator(ABC):
         rows = []
 
         for video in videos:
-            uuid = processor.process_field(processor.processing_rules["fields"]["uuid"], video)
+            uuid = processor.process_field(processor.processing_rules.fields["uuid"], video)
             if uuid in self.existing_uuids:
                 logger.info(f"⏭️ Skipping duplicate video: {uuid}")
                 continue
@@ -37,7 +37,7 @@ class BaseCreator(ABC):
             row = {col: "" for col in self.header}
             row["uuid"] = uuid
             
-            for field, rule in processor.processing_rules["fields"].items():
+            for field, rule in processor.processing_rules.fields.items():
 
                 if field == "uuid" or field not in self.header:
                     continue

@@ -1,0 +1,34 @@
+{
+    "fields": {
+        "分辨率": {
+            "function": "get_resolution",
+            "params": [
+                "dimension"
+            ]
+        },
+        "视频比例": {
+            "function": "get_aspect_ratio",
+            "params": [
+                "dimension"
+            ]
+        },
+        "播放量/浏览数": {
+            "function": "direct",
+            "params": [
+                "view"
+            ]
+        },
+        "内容概述": {
+            "function": "filter_description",
+            "params": [
+                "desc"
+            ]
+        },
+        "关联视频/系列": {
+            "function": "get_ugc_reason",
+            "params": [
+                "ugc_reason"
+            ]
+        }
+    }
+}

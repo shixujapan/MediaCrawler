@@ -37,7 +37,7 @@ class BilibiliCreator(BaseCreator):
                 cover_url=content["cover_url"],
                 desc=content["desc"],
                 platform="bilibili",
-                ugc_reason=content["ugc_reason"],
+                ugc_reason=content["ugc_reason"]
             )
             rows.append(video)
         return rows

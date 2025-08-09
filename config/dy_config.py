@@ -13,13 +13,22 @@ PUBLISH_TIME_TYPE = 0
 
 # 指定DY视频ID列表
 DY_SPECIFIED_ID_LIST = [
-    "7280854932641664319",
-    "7202432992642387233",
+    # "7280854932641664319",
+    # "7202432992642387233",
+    # 共创
+    "7285301934817283347",
+    # 合集
+    "7336854382077676841",
+    # 一般
+    "7491553187451718970"
+
     # ........................
 ]
 
 # 指定DY用户ID列表
 DY_CREATOR_ID_LIST = [
-    "MS4wLjABAAAATJPY7LAlaa5X-c8uNdWkvz0jUGgpw4eeXIwu_8BhvqE",
+    "MS4wLjABAAAAXHMxuya3n3FBxUkEK2kovUyTKMyRrZrjk-4lt6hcgZ4",
+    "MS4wLjABAAAAwNznut9C9KSLFvs85j_gEHjvIsBQqE47DCztkdzjCIE"
+    # "MS4wLjABAAAATJPY7LAlaa5X-c8uNdWkvz0jUGgpw4eeXIwu_8BhvqE",
     # ........................
 ]
