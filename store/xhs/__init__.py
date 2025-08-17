@@ -64,6 +64,58 @@ def get_video_url_arr(note_item: Dict) -> List:
 
     return videoArr
 
+async def update_xhs_note_v2(note_item: Dict):
+    """
+    更新小红书笔记
+    Args:
+        note_item:
+
+    Returns:
+
+    """
+    note_id = note_item.get("note_id")
+    user_info = note_item.get("user", {})
+    interact_info = note_item.get("interact_info", {})
+    image_list: List[Dict] = note_item.get("image_list", [])
+    tag_list: List[Dict] = note_item.get("tag_list", [])
+
+    for img in image_list:
+        if img.get('url_default') != '':
+            img.update({'url': img.get('url_default')})
+
+    video_url = ','.join(get_video_url_arr(note_item))
+
+    # https://github.com/JoeanAmier/XHS-Downloader
+
+    local_db_item = {
+        # source_id
+        "note_id": note_item.get("note_id"),  # 帖子id
+        "type": note_item.get("type"),  # 帖子类型(video/normal)
+        "title": note_item.get("title"),  # 帖子标题
+        "desc": note_item.get("desc", ""),  # 帖子描述
+        # pubdate
+        "time": note_item.get("time"),  # 帖子发布时间
+        "last_update_time": note_item.get("last_update_time", 0),  # 帖子最后更新时间
+        "duration": note_item.get("video").get("media").get("video").get("duration") if note_item.get("video") else 0, # 视频时长（如果是图片那么设为0）
+        "user_id": user_info.get("user_id"),  # 用户id
+        "nickname": user_info.get("nickname"),  # 用户昵称
+        "video_url": video_url,  # 帖子视频url
+        "avatar": user_info.get("avatar"),  # 用户头像
+        "liked_count": interact_info.get("liked_count"),  # 点赞数
+        "collected_count": interact_info.get("collected_count"),  # 收藏数
+        "comment_count": interact_info.get("comment_count"),  # 评论数
+        "share_count": interact_info.get("share_count"),  # 分享数
+        "ip_location": note_item.get("ip_location", ""),  # ip地址
+        "at_user_list": note_item.get("at_user_list"),
+        "image_list": [img.get('url', '') for img in image_list],  # 图片url
+        "tag_list": [tag.get('name', '') for tag in tag_list if tag.get('type') == 'topic'],  # 标签
+        "last_modify_ts": utils.get_current_timestamp(),  # 最后更新时间戳（MediaCrawler程序生成的，主要用途在db存储的时候记录一条记录最新更新时间）
+        "note_url": f"https://www.xiaohongshu.com/explore/{note_id}?xsec_token={note_item.get('xsec_token')}&xsec_source=pc_search",  # 帖子url
+        "source_keyword": source_keyword_var.get(),  # 搜索关键词
+        "xsec_token": note_item.get("xsec_token"),  # xsec_token
+    }
+    utils.logger.info(f"[store.xhs.update_xhs_note] xhs note: {local_db_item}")
+    await XhsStoreFactory.create_store().store_content(local_db_item)
 
 async def update_xhs_note(note_item: Dict):
     """

@@ -213,7 +213,8 @@ class XiaoHongShuCrawler(AbstractCrawler):
         note_details = await asyncio.gather(*task_list)
         for note_detail in note_details:
             if note_detail:
-                await xhs_store.update_xhs_note(note_detail)
+                # await xhs_store.update_xhs_note(note_detail)
+                await xhs_store.update_xhs_note_v2(note_detail)
                 await self.get_notice_media(note_detail)
 
     async def get_specified_notes(self):
@@ -238,11 +239,18 @@ class XiaoHongShuCrawler(AbstractCrawler):
         need_get_comment_note_ids = []
         xsec_tokens = []
         note_details = await asyncio.gather(*get_note_detail_task_list)
+        # import json, os
+
+        # target_file = os.path.join("/Users/xu.shi/Downloads/圻夏夏/测试数据集", "xhs_合集_一般_图.json")
+        # with open(target_file, "w", encoding="utf-8") as f:
+        #     json.dump(note_details, f, ensure_ascii=False, indent=4)
+
         for note_detail in note_details:
             if note_detail:
                 need_get_comment_note_ids.append(note_detail.get("note_id", ""))
                 xsec_tokens.append(note_detail.get("xsec_token", ""))
-                await xhs_store.update_xhs_note(note_detail)
+                # await xhs_store.update_xhs_note(note_detail)
+                await xhs_store.update_xhs_note_v2(note_detail)
                 await self.get_notice_media(note_detail)
         await self.batch_get_note_comments(need_get_comment_note_ids, xsec_tokens)
 

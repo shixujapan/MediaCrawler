@@ -1,5 +1,5 @@
 from model import Video
-from typing import Dict, Any, List
+from typing import Dict, Any
 from pydantic import Field
 
 class DouyinVideo(Video):

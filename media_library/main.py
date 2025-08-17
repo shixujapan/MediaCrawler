@@ -1,11 +1,12 @@
-from creator import BilibiliCreator,BaseCreator, DouyinCreator
-from processor import BilibiliProcessor, BaseProcessor, DouyinProcessor
+from creator import BilibiliCreator,BaseCreator, DouyinCreator, XhsCreator
+from processor import BilibiliProcessor, BaseProcessor, DouyinProcessor, XhsProcessor
 from pathlib import Path
 
 class CreatorFactory:
     CREATORS = {
         "bilibili": BilibiliCreator,
         "douyin": DouyinCreator,
+        "xhs": XhsCreator
 
     }
 
@@ -20,6 +21,7 @@ class ProcessorFactory:
     PROCESSORS = {
         "bilibili": BilibiliProcessor,
         "douyin": DouyinProcessor,
+        "xhs": XhsProcessor
     }
 
     @staticmethod

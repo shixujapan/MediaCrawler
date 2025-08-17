@@ -1,0 +1,10 @@
+{
+    "fields": {
+        "分享链接": {
+            "function": "get_share_url",
+            "params": [
+                "source_id", "xsec_token"
+            ]
+        }
+    }
+}

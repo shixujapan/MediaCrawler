@@ -6,9 +6,14 @@ import os
 from abc import ABC, abstractmethod
 from typing import Optional, Callable, Dict
 from model import ProcessorConfig, FieldRule
+import re
+from datetime import datetime, timedelta, timezone
+from utils.process_util import normalize_timestamp
 
 class BaseProcessor(ABC):
     """Processes video metadata dynamically based on config.json rules."""
+
+    BEIJING_TZ = timezone(timedelta(hours=8))
 
     def __init__(self, platform: str):
         current_file = Path(__file__).resolve()
@@ -38,6 +43,7 @@ class BaseProcessor(ABC):
             "format_duration": self.format_duration,
             "get_share_url": self.get_share_url,
             "get_tags": self.get_tags,
+            "filter_description": self.filter_description,
             "direct": lambda *args: args[0] if args else None,
         }
         self.register_functions()
@@ -75,13 +81,19 @@ class BaseProcessor(ABC):
 
     @staticmethod
     def get_date(timestamp):
-        """Extracts the date (YYYY/MM/DD) from a UNIX timestamp."""
-        return datetime.fromtimestamp(timestamp).strftime("%Y/%m/%d") if timestamp else ""
+        """Extracts the date (YYYY/MM/DD) from a UNIX timestamp (any unit)."""
+        if not timestamp:
+            return ""
+        ts = normalize_timestamp(timestamp)
+        return datetime.fromtimestamp(ts, BaseProcessor.BEIJING_TZ).strftime("%Y/%m/%d")
 
     @staticmethod
     def get_time(timestamp):
-        """Extracts the time (HH:MM:SS) from a UNIX timestamp."""
-        return datetime.fromtimestamp(timestamp).strftime("%H:%M:%S") if timestamp else ""
+        """Extracts the time (HH:MM:SS) from a UNIX timestamp (any unit)."""
+        if not timestamp:
+            return ""
+        ts = normalize_timestamp(timestamp)
+        return datetime.fromtimestamp(ts, BaseProcessor.BEIJING_TZ).strftime("%H:%M:%S")
 
     @staticmethod
     def format_duration(duration):

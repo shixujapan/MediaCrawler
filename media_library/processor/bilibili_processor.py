@@ -8,8 +8,7 @@ class BilibiliProcessor(BaseProcessor):
             **self.func_map,
             "get_resolution": self.get_resolution,
             "get_aspect_ratio": self.get_aspect_ratio,
-            "get_ugc_reason": self.get_ugc_reason,
-            "filter_description": self.filter_description
+            "get_ugc_reason": self.get_ugc_reason
         }
 
     @staticmethod

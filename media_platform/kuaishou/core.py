@@ -172,9 +172,17 @@ class KuaishouCrawler(AbstractCrawler):
             for video_id in config.KS_SPECIFIED_ID_LIST
         ]
         video_details = await asyncio.gather(*task_list)
+
+        # import json, os
+
+        # target_file = os.path.join("/Users/xu.shi/Downloads/圻夏夏/测试数据集", "kuaishou_共创_合集_一般.json")
+        # with open(target_file, "w", encoding="utf-8") as f:
+        #     json.dump(video_details, f, ensure_ascii=False, indent=4)
+
         for video_detail in video_details:
             if video_detail is not None:
-                await kuaishou_store.update_kuaishou_video(video_detail)
+                # await kuaishou_store.update_kuaishou_video(video_detail)
+                await kuaishou_store.update_kuaishou_video_v2(video_detail)
         await self.batch_get_video_comments(config.KS_SPECIFIED_ID_LIST)
 
     @retry(
@@ -410,7 +418,8 @@ class KuaishouCrawler(AbstractCrawler):
         video_details = await asyncio.gather(*task_list)
         for video_detail in video_details:
             if video_detail is not None:
-                await kuaishou_store.update_kuaishou_video(video_detail)
+                # await kuaishou_store.update_kuaishou_video(video_detail)
+                await kuaishou_store.update_kuaishou_video_v2(video_detail)
 
     async def close(self):
         """Close browser context"""

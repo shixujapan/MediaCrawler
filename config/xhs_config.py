@@ -17,7 +17,13 @@ SORT_TYPE = "popularity_descending"
 
 # 指定笔记URL列表, 必须要携带xsec_token参数
 XHS_SPECIFIED_NOTE_URL_LIST = [
-    "https://www.xiaohongshu.com/explore/66fad51c000000001b0224b8?xsec_token=AB3rO-QopW5sgrJ41GwN01WCXh6yWPxjSoFI9D5JIMgKw=&xsec_source=pc_search"
+    # "https://www.xiaohongshu.com/explore/66fad51c000000001b0224b8?xsec_token=AB3rO-QopW5sgrJ41GwN01WCXh6yWPxjSoFI9D5JIMgKw=&xsec_source=pc_search"
+    # 合集（答案之书）
+    "https://www.xiaohongshu.com/explore/62d38f43000000002103f7a8?xsec_token=ABBWLkze5wXprAwsL5u9SjLhclBZUVWwOPb_DGawRCEQE=&xsec_source=pc_search",
+    # 一般
+    "https://www.xiaohongshu.com/explore/6124bc8c0000000021037961?xsec_token=ABF9R9ww3KmcpFPNYcCwOnczdX-4NpVNN4OIl1__iWzhI=&xsec_source=pc_search",
+    # 图
+    "https://www.xiaohongshu.com/explore/62875ec1000000002103fc59?xsec_token=ABPDnxLtuIXFzfvQODnzkHbMURyiWGaZV0QByQQNPaOwk=&xsec_source=pc_search"
     # ........................
 ]
 

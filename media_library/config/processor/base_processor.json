@@ -43,6 +43,12 @@
                 "pubdate"
             ]
         },
+        "内容概述": {
+            "function": "filter_description",
+            "params": [
+                "desc"
+            ]
+        },
         "视频时长": {
             "function": "format_duration",
             "params": [
@@ -53,6 +59,12 @@
             "function": "get_share_url",
             "params": [
                 "source_id"
+            ]
+        },
+        "播放量/浏览数": {
+            "function": "direct",
+            "params": [
+                "view"
             ]
         },
         "点赞数": {

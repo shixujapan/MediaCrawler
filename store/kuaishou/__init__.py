@@ -37,6 +37,36 @@ class KuaishouStoreFactory:
                 "[KuaishouStoreFactory.create_store] Invalid save option only supported csv or db or json or sqlite ...")
         return store_class()
 
+async def update_kuaishou_video_v2(video_item: Dict):
+    photo_info: Dict = video_item.get("photo", {})
+    video_id = photo_info.get("id")
+    if not video_id:
+        return
+    user_info = video_item.get("author", {})
+
+    save_content_item = {
+        # source_id
+        "video_id": video_id,
+        "video_type": str(video_item.get("type")),
+        "title": photo_info.get("caption", ""),
+        "desc": photo_info.get("caption", ""),
+        "create_time": photo_info.get("timestamp"),
+        "duration": photo_info.get("duration"),
+        "user_id": user_info.get("id"),
+        "nickname": user_info.get("name"),
+        "avatar": user_info.get("headerUrl", ""),
+        "tags": [tag.get("name", "") for tag in video_item.get("tags", [])],
+        "liked_count": photo_info.get("realLikeCount"),
+        "viewd_count": str(photo_info.get("viewCount")),
+        "last_modify_ts": utils.get_current_timestamp(),
+        "video_url": f"https://www.kuaishou.com/short-video/{video_id}",
+        "video_cover_url": photo_info.get("coverUrl", ""),
+        "video_play_url": photo_info.get("photoUrl", ""),
+        "source_keyword": source_keyword_var.get(),
+    }
+    utils.logger.info(
+        f"[store.kuaishou.update_kuaishou_video] Kuaishou video id:{video_id}, title:{save_content_item.get('title')}")
+    await KuaishouStoreFactory.create_store().store_content(content_item=save_content_item)
 
 async def update_kuaishou_video(video_item: Dict):
     photo_info: Dict = video_item.get("photo", {})

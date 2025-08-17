@@ -8,7 +8,6 @@ class DouyinProcessor(BaseProcessor):
         self.func_map = {
             **self.func_map,
             "get_mix_info": self.get_mix_info,
-            "filter_description": self.filter_description,
             "get_director": self.get_director,
         }
 

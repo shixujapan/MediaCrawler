@@ -11,7 +11,19 @@
 # 快手平台配置
 
 # 指定快手视频ID列表
-KS_SPECIFIED_ID_LIST = ["3xf8enb8dbj6uig", "3x6zz972bchmvqe"]
+KS_SPECIFIED_ID_LIST = [
+    # "3xf8enb8dbj6uig",
+    # "3x6zz972bchmvqe"
+    # 合集（浮华梦）
+    "3xc4ivrixnruw3k",
+    # 合集（答案之书）
+    "3xv3ssuhetyxz4q",
+    # 共创
+    "3x2tckum3n54bww",
+    # 一般
+    "3xb3pchjecvaxk4"
+
+]
 
 # 指定快手用户ID列表
 KS_CREATOR_ID_LIST = [

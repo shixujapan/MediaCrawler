@@ -12,18 +12,6 @@
                 "dimension"
             ]
         },
-        "播放量/浏览数": {
-            "function": "direct",
-            "params": [
-                "view"
-            ]
-        },
-        "内容概述": {
-            "function": "filter_description",
-            "params": [
-                "desc"
-            ]
-        },
         "关联视频/系列": {
             "function": "get_ugc_reason",
             "params": [

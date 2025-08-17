@@ -13,12 +13,6 @@
                 "music_download_url"
             ]
         },
-        "内容概述": {
-            "function": "direct",
-            "params": [
-                "desc"
-            ]
-        },
         "关联视频/系列": {
             "function": "get_mix_info",
             "params": [
