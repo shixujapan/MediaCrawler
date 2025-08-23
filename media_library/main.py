@@ -1,13 +1,13 @@
-from creator import BilibiliCreator,BaseCreator, DouyinCreator, XhsCreator
-from processor import BilibiliProcessor, BaseProcessor, DouyinProcessor, XhsProcessor
+from creator import BaseCreator, BilibiliCreator, DouyinCreator, XhsCreator, KuaishouCreator
+from processor import BaseProcessor, BilibiliProcessor, DouyinProcessor, XhsProcessor, KuaishouProcessor
 from pathlib import Path
 
 class CreatorFactory:
     CREATORS = {
         "bilibili": BilibiliCreator,
         "douyin": DouyinCreator,
-        "xhs": XhsCreator
-
+        "xhs": XhsCreator,
+        "kuaishou": KuaishouCreator
     }
 
     @staticmethod
@@ -21,14 +21,15 @@ class ProcessorFactory:
     PROCESSORS = {
         "bilibili": BilibiliProcessor,
         "douyin": DouyinProcessor,
-        "xhs": XhsProcessor
+        "xhs": XhsProcessor,
+        "kuaishou": KuaishouProcessor
     }
 
     @staticmethod
     def create_processor(platform: str) -> BaseProcessor:
         processor_class = ProcessorFactory.PROCESSORS.get(platform)
         if not processor_class:
-            raise ValueError("Invalid Media Platform Currently only supported bili ...")
+            raise ValueError("Invalid Media Platform Currently only supported xhs, douyin, kuaishou, bilibili ...")
         return processor_class()
 
 def main(platform: str, save_data_option: str):
@@ -48,7 +49,7 @@ def main(platform: str, save_data_option: str):
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument("--platform", type=str, choices=["xhs", "douyin", "kuashou", "bilibili"], default="bilibili")
+    parser.add_argument("--platform", type=str, choices=["xhs", "douyin", "kuaishou", "bilibili"], default="bilibili")
     parser.add_argument("--save_data_option", type=str, default="csv")
     args = parser.parse_args()
 

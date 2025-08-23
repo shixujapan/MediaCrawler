@@ -43,7 +43,7 @@ async def update_kuaishou_video_v2(video_item: Dict):
     if not video_id:
         return
     user_info = video_item.get("author", {})
-
+    tags = [] if not video_item.get("tags") else video_item.get("tags")
     save_content_item = {
         # source_id
         "video_id": video_id,
@@ -55,7 +55,7 @@ async def update_kuaishou_video_v2(video_item: Dict):
         "user_id": user_info.get("id"),
         "nickname": user_info.get("name"),
         "avatar": user_info.get("headerUrl", ""),
-        "tags": [tag.get("name", "") for tag in video_item.get("tags", [])],
+        "tags": [tag.get("name", "") for tag in tags],
         "liked_count": photo_info.get("realLikeCount"),
         "viewd_count": str(photo_info.get("viewCount")),
         "last_modify_ts": utils.get_current_timestamp(),

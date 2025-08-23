@@ -1,4 +1,5 @@
 from typing import Union
+
 def normalize_timestamp(ts: Union[int, float]) -> float:
     """
     Normalize a Unix timestamp in seconds, milliseconds,

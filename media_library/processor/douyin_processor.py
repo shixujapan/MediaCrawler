@@ -19,10 +19,10 @@ class DouyinProcessor(BaseProcessor):
     @staticmethod
     def get_mix_info(mix_info):
         """Returns the mix_info information."""
-        return f"合集·{mix_info['mix_name']}\n{mix_info['share_url']}" if mix_info and mix_info['mix_name'] else ""
+        return f"合集·{mix_info['mix_name']}|{mix_info['share_url']}" if mix_info and mix_info['mix_name'] else ""
     
     @staticmethod
     def get_director(cooperation_info, author):
         """Returns the director information."""
         co_creators = cooperation_info.get("co_creators", [])
-        return (f"{','.join([c['nickname'] for c in co_creators])}" + f",{author}") if co_creators else ""
+        return f"{','.join([c['nickname'] for c in co_creators])}" if co_creators else ""

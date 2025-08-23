@@ -5,6 +5,12 @@
             "params": [
                 "source_id", "xsec_token"
             ]
+        },
+        "下载链接": {
+            "function": "direct",
+            "params": [
+                "video_url"
+            ]
         }
     }
 }

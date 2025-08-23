@@ -8,3 +8,4 @@ from .bilibili_video import BilibiliVideo
 from .douyin_video import DouyinVideo
 from .processor_config import ProcessorConfig, FieldRule
 from .xhs_video import XhsVideo
+from .kuashou_video import KuashouVideo

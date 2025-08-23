@@ -73,7 +73,7 @@ class BaseCreator(ABC):
             header = json.load(file)
 
         if not Path(self.library_file_path).exists():
-            df = pd.DataFrame(columns=[col["name"] for col in header if col["is_enabled"]])
+            df = pd.DataFrame(columns=[col["name"] for col in header])
             df.to_csv(self.library_file_path, index=False, encoding="utf-8-sig")
             print(f"Initialized library.csv in {self.target_folder}")
 

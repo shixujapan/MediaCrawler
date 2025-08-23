@@ -28,6 +28,7 @@ class DouyinCreator(BaseCreator):
                 mix_info=content["mix_info"],
                 tags=self.get_creator_video_tags(content),
                 music_download_url=content["music_download_url"],
+                video_download_url=content["video_download_url"],
                 like=content["liked_count"],
                 reply=content["comment_count"],
                 share=content["share_count"],

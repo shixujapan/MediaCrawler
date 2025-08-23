@@ -30,7 +30,8 @@ class XhsCreator(BaseCreator):
                 favorite=self.parse_chinese_number(content["liked_count"]),
                 desc=content["desc"],
                 platform="xhs",
-                xsec_token=content["xsec_token"]
+                xsec_token=content["xsec_token"],
+                video_url=content["video_url"]
             )
             rows.append(video)
         return rows

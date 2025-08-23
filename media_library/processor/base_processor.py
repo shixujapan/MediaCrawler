@@ -24,22 +24,23 @@ class BaseProcessor(ABC):
         with open(os.path.join(source_folder, "processor", "base_processor.json"), "r", encoding="utf-8") as file:
             base_processor_config = json.load(file)
 
-        with open(os.path.join(source_folder, "processor", f"{platform}_processor.json"), "r", encoding="utf-8") as file:
-            platform_processor_config = json.load(file)
+        try:
+            with open(os.path.join(source_folder, "processor", f"{platform}_processor.json"), "r", encoding="utf-8") as file:
+                platform_processor_config = json.load(file)
+        except FileNotFoundError:
+            platform_processor_config = {}
 
         self.processing_rules: ProcessorConfig = ProcessorConfig(
-            **{
-                "fields":{
-                    **base_processor_config["fields"],
-                    **platform_processor_config["fields"]
-                }
+            fields={
+                **base_processor_config.get("fields", {}),
+                **platform_processor_config.get("fields", {})
             }
         )
 
         self.func_map: Dict[str, Callable[..., Optional[str]]] = {
             "generate_uuid": self.generate_uuid,
             "get_date": self.get_date,
-            "get_time": self.get_time,
+            # "get_time": self.get_time,
             "format_duration": self.format_duration,
             "get_share_url": self.get_share_url,
             "get_tags": self.get_tags,

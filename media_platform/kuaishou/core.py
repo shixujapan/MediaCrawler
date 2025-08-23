@@ -100,6 +100,7 @@ class KuaishouCrawler(AbstractCrawler):
                 )
 
             crawler_type_var.set(config.CRAWLER_TYPE)
+            self.failed_video_ids = set()  # Store video IDs that failed to fetch
             if config.CRAWLER_TYPE == "search":
                 # Search for videos and retrieve their comment information.
                 await self.search()
@@ -184,6 +185,9 @@ class KuaishouCrawler(AbstractCrawler):
                 # await kuaishou_store.update_kuaishou_video(video_detail)
                 await kuaishou_store.update_kuaishou_video_v2(video_detail)
         await self.batch_get_video_comments(config.KS_SPECIFIED_ID_LIST)
+
+        if self.failed_video_ids:
+            utils.logger.warning(f"[KuaiShouCrawler.get_specified_videos] Failed to fetch video_ids: {self.failed_video_ids}")
 
     @retry(
         stop=stop_after_attempt(5),
@@ -383,7 +387,6 @@ class KuaishouCrawler(AbstractCrawler):
             "[KuaiShouCrawler.get_creators_and_videos] Begin get kuaishou creators"
         )
 
-        self.failed_video_ids = set()  # Store video IDs that failed to fetch
         for user_id in config.KS_CREATOR_ID_LIST:
             # get creator detail info from web html content
             createor_info: Dict = await self.ks_client.get_creator_info(user_id=user_id)

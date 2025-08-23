@@ -37,13 +37,7 @@
                 "pubdate"
             ]
         },
-        "发布时间": {
-            "function": "get_time",
-            "params": [
-                "pubdate"
-            ]
-        },
-        "内容概述": {
+        "简介": {
             "function": "filter_description",
             "params": [
                 "desc"
