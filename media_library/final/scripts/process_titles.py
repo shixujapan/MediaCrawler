@@ -27,7 +27,14 @@ import pandas as pd
 TAG_INLINE_RE = re.compile(r"#([A-Za-z0-9_\u4e00-\u9fff]+)")
 AT_INLINE_RE  = re.compile(r"(?<!\w)@([A-Za-z0-9_\u4e00-\u9fff·•・]+)")
 
-EMOJI_RE = re.compile("[" "\U0001F300-\U0001FAFF" "\U00002700-\U000027BF" "\U0001F900-\U0001F9FF" "]+")
+EMOJI_RE = re.compile(
+    "["                         # BMP 与补充面区常见 emoji/符号
+    "\u2600-\u26FF"             # ★ 这个区段包含 ♀ ☁ 等
+    "\U0001F300-\U0001FAFF"
+    "\U00002700-\U000027BF"
+    "\U0001F900-\U0001F9FF"
+    "]+"
+)
 KAOMOJI_RE = re.compile(
     r"[\(\（【\[]"
     r"[^()\[\]{}（）【】\n]{0,20}?"
@@ -36,16 +43,37 @@ KAOMOJI_RE = re.compile(
     r"[\)\）】\]]"
 )
 
-# Role annotations: capture (role)(names)
-# 允许 emoji/白名单中文角色词；在 role 与 冒号之间容忍零宽字符 (ZWSP/ZWJ/FEFF)
-ROLE_KV_RE = re.compile(
-    r"("  # 角色捕获组
-    r"(?:[\u2600-\u27BF\U0001F300-\U0001FAFF]{1,3})"   # 1-3 个 emoji
-    r"|出境|出镜|摄影|剪辑|衣服|服装|化妆|妆容|设定|摄/后|拍摄|妆造|动作指导|发起人|导演|编剧|编导|策划|制作|监制|主演|主演/配音|配音|配音演员|配音导演|角色|角色扮演|角色/配音|角色/出境|角色/出镜|角色/扮演|角色/出演|角色/主演|角色/客串|扮演|出演|客串|嘉宾|特别出演|友情出演|友情客串|友情客串/出境|友情客串/出镜|友情客串/配音|友情出演/配音|友情出演/出境|友情出演/出镜|特别出演/配音|特别出演/出境|特别出演/出镜"
+
+# 连字符（普通 -, 以及 U+2010/U+2011/U+2013/U+2014）
+_HYPHEN = r"(?:-|[\u2010\u2011\u2013\u2014])"
+
+# 单个人名 token（允许一次连字符后缀，如 “池夏-蝉时雨”）
+_NAME_TOKEN = rf"[A-Za-z0-9_\u4e00-\u9fff·•・]+(?:{_HYPHEN}\s*[A-Za-z0-9_\u4e00-\u9fff·•・]+)?"
+
+# 角色词（用于“逗号后别接角色词”判断）
+_ROLE_WORDS = r"(?:|出境|出镜|摄影|剪辑|衣服|服装|化妆|妆容|设定|摄/后|拍摄|妆造|动作指导|发起人|导演|编剧|编导|策划|制作|监制|主演|主演/配音|配音|配音演员|配音导演|角色|角色扮演|角色/配音|角色/出境|角色/出镜|角色/扮演|角色/出演|角色/主演|角色/客串|扮演|出演|客串|嘉宾|特别出演|友情出演|友情客串|友情客串/出境|友情客串/出镜|友情客串/配音|友情出演/配音|友情出演/出境|友情出演/出镜|特别出演/配音|特别出演/出境|特别出演/出镜)"
+
+# 分隔符：允许「、 / & 和 以及」，对逗号做“负前瞻”：逗号后不能紧跟角色词
+_SEP = rf"(?:[、/&和以及]|,(?!\s*{_ROLE_WORDS}))"
+
+# 多人名组：每个名字前可选 @
+_NAMES_GROUP = rf"@?(?:{_NAME_TOKEN}(?:{_SEP}\s*@?{_NAME_TOKEN})*)"
+
+# 角色:名字（角色前后容忍零宽/变体，冒号可中英文）
+_ROLE_PATTERN = (
+    rf"(?:[\u200B-\u200D\uFE0E\uFE0F\uFEFF]*)"
+    rf"("  # 角色捕获
+        rf"(?:[\u2600-\u27BF\U0001F300-\U0001FAFF])"
+        rf"(?:\u200D(?:[\u2600-\u27BF\U0001F300-\U0001FAFF]))*"
+        rf"(?:[\uFE0E\uFE0F])?"
+        r"|出境|出镜|摄影|剪辑|衣服|服装|化妆|妆容|设定|内心深处的两个灵魂|食腐寄生变异体"
     r")"
-    r"(?:[\u200B-\u200D\uFEFF])?\s*[:：]\s*"
-    r"@?([A-Za-z0-9_\u4e00-\u9fff·•・]+(?:[、,/&和以及]\s*[A-Za-z0-9_\u4e00-\u9fff·•・]+)*)"
+    rf"(?:[\u200B-\u200D\uFE0E\uFE0F\uFEFF]*)\s*[:：]\s*"
+    rf"({_NAMES_GROUP})"
 )
+
+ROLE_KV_RE = re.compile(_ROLE_PATTERN)
+
 NAME_SEP_RE = re.compile(r"[、,/&和以及]+")
 
 # tokens
@@ -180,19 +208,19 @@ def extract_role_coops(text: str) -> List[str]:
     if not text: 
         return []
     hits = []
-    for role, names in ROLE_KV_RE.findall(text):
+    for role, names in ROLE_KV_RE.findall(text):  # list[tuple(role, names)]
         role_norm = nfkc(role).strip()
         if role_norm in ROLE_IGNORE_SET:
-            continue
+            continue  # ignore（不抽取）
         for n in split_names(names):
             if not n: continue
             n = n.strip().lstrip("@")
             nl = n.lower()
-            if nl in MYSELF_LOWER:
+            if nl in MYSELF_LOWER:        # 自指
                 continue
-            if ID_LIKE_RE.match(n):
+            if ID_LIKE_RE.match(n):       # id-like
                 continue
-            if NON_PERSON_RE.search(n):
+            if NON_PERSON_RE.search(n):   # 非人称短语
                 continue
             hits.append(n)
     return hits
@@ -301,7 +329,7 @@ def process_dataframe(df: pd.DataFrame, stop_words: set, coop_rules: List[Tuple[
 
         # 6) build final title:
         #    - remove #tags
-        #    - remove @names (from @ and roles) + 兜底去掉 ":名字" & ":我/本人/自己/me/i"
+        #    - remove @names (from @ and roles) + 兜底去掉 ":名字" & ":我/本人/自己/me/i"（容忍零宽）
         #    - remove non-ignored role segments
         #    - remove bracketed id-like and empty parentheses
         clean_t = title
@@ -314,13 +342,21 @@ def process_dataframe(df: pd.DataFrame, stop_words: set, coop_rules: List[Tuple[
             # 删带 @ 的名字
             pat = r"(?:\s*@(?:" + "|".join(map(re.escape, extracted_names)) + r"))(?!\w)"
             clean_t = re.sub(pat, " ", clean_t)
-            # 兜底：删掉“:名字”（可能因前面 emoji 被删导致左侧角色缺失）
-            pat2 = r"(^|[\s，。！？!?.])[:：]\s*(?:" + "|".join(map(re.escape, extracted_names)) + r")(?!\w)"
+            # 兜底：删掉“:名字”（可能因前面 emoji 被删导致左侧角色缺失）——容忍零宽
+            pat2 = (
+                r"(^|[\s，。！？!?.\u200B-\u200D\uFE0E\uFE0F\uFEFF])"
+                r"[:：]\s*(?:" + "|".join(map(re.escape, extracted_names)) + r")(?!\w)"
+            )
             clean_t = re.sub(pat2, r"\1", clean_t)
 
-        # ★ 兜底再兜底：删掉 “:我/本人/自己/me/i”，避免出现“……:我”
+            # ★ 删除“无冒号的多人名列表”（由已抽取的人名构成）
+            names_alt = "|".join(map(re.escape, extracted_names))
+            LIST_TAIL_RE = re.compile(r"(?:[、,/&和以及]\s*@?(?:" + names_alt + r"))+")
+            clean_t = LIST_TAIL_RE.sub("", clean_t)
+
+        # 兜底再兜底：删掉 “:我/本人/自己/me/i”
         SELF_WORDS = ["我", "本人", "自己", "me", "i"]
-        pat_self = r"(^|[\s，。！？!?.])[:：]\s*(?:" + "|".join(map(re.escape, SELF_WORDS)) + r")(?!\w)"
+        pat_self = r"(^|[\s，。！？!?.\u200B-\u200D\uFE0E\uFE0F\uFEFF])[:：]\s*(?:" + "|".join(map(re.escape, SELF_WORDS)) + r")(?!\w)"
         clean_t = re.sub(pat_self, r"\1", clean_t)
 
         # remove role segments entirely, but keep ignored ones like 设定:AAA / 内心深处的两个灵魂:...
@@ -329,13 +365,23 @@ def process_dataframe(df: pd.DataFrame, stop_words: set, coop_rules: List[Tuple[
             return m.group(0) if role in ROLE_IGNORE_SET else " "
         clean_t = ROLE_KV_RE.sub(_remove_roles, clean_t)
 
+        # 括号ID / 空括号
         clean_t = PAREN_ID_TOKEN_RE.sub(" ", clean_t)  # (AB12...) anywhere
         clean_t = EMPTY_PAREN_RE.sub(" ", clean_t)     # () （） [] 【】 {}
         clean_t = re.sub(r"\s{2,}", " ", clean_t).strip()
 
-        # 删掉句末孤立的冒号
+        # 兜底：删 “: 多人名列表”（至少一个人名分隔符，避免误删普通文本）
+        COLON_MULTI_NAMES_RE = re.compile(
+            r"(^|[\s，。！？!?.\u200B-\u200D\uFE0E\uFE0F\uFEFF])"
+            r"[:：]\s*@?(?:[A-Za-z0-9_\u4e00-\u9fff·•・]+(?:[、,/&和以及]\s*@?[A-Za-z0-9_\u4e00-\u9fff·•・]+)+)(?!\w)"
+        )
+        clean_t = COLON_MULTI_NAMES_RE.sub(r"\1", clean_t)
+
+        # 去掉所有零宽/变体字符
+        clean_t = re.sub(r"[\u200B-\u200D\uFE0E\uFE0F\uFEFF]+", "", clean_t)
+
+        # 删掉句末孤立的冒号 & 悬挂冒号
         clean_t = re.sub(r"[:：]\s*$", "", clean_t)
-        # 删掉“悬挂的冒号”：句首/空白/标点 后紧跟 冒号+空格+文字 的冒号
         clean_t = re.sub(r"(^|[\s，。！？!?.])[:：]\s+(?=[\u4e00-\u9fffA-Za-z0-9])", r"\1", clean_t)
 
         # balance unmatched brackets then finalize punctuation
