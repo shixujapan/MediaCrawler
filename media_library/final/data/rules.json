@@ -1,0 +1,16 @@
+{
+  "stop_words": [
+    "圻夏夏"
+  ],
+  "normalize_coop": [
+    { "pattern": "夏弃疾", "replacement": "夏弃疾（下乡版）" },
+    { "pattern": "庄翰", "replacement": "庄翰_Roya" },
+    { "pattern": "思思sr", "replacement": "思思Sr" },
+    { "pattern": "杨馥羽", "replacement": "杨馥羽" },
+    { "pattern": "锦超", "replacement": "锦超" },
+    { "pattern": "燕子坞主", "replacement": "燕子坞主" },
+    { "pattern": "圣微", "replacement": "圣微" },
+    { "pattern": "爱野", "replacement": "爱野" },
+    { "pattern": "君辞", "replacement": "君辞" }
+  ]
+}
