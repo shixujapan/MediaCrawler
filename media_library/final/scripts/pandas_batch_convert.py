@@ -70,6 +70,7 @@ TARGET_FIELDS_ORDER = [
     "tags",
     "bgm",
     "co_operators",
+    "author",
     "related_series",
 ]
 
