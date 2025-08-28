@@ -1,0 +1,109 @@
+[
+  {
+    "order": 0,
+    "name": "series_id",
+    "type": "rich_text",
+    "description": "合集唯一标识（名称+hash）",
+    "label": "合集ID",
+    "is_displayed": true
+  },
+  {
+    "order": 1,
+    "name": "series_name",
+    "type": "title",
+    "description": "合集名称",
+    "label": "合集名称",
+    "is_displayed": true
+  },
+  {
+    "order": 2,
+    "name": "desc",
+    "type": "rich_text",
+    "description": "合集简介",
+    "label": "合集简介",
+    "is_displayed": true
+  },
+  {
+    "order": 3,
+    "name": "tags",
+    "type": "rich_text",
+    "description": "合集标签（短剧/探店/幕后/花絮…）",
+    "label": "标签",
+    "is_displayed": true
+  },
+  {
+    "order": 4,
+    "name": "start_date",
+    "type": "date",
+    "description": "合集起始时间（可选）",
+    "label": "开始时间",
+    "is_displayed": false
+  },
+  {
+    "order": 5,
+    "name": "end_date",
+    "type": "date",
+    "description": "合集结束时间（如适用）",
+    "label": "结束时间",
+    "is_displayed": false
+  },
+  {
+    "order": 6,
+    "name": "work_id_list",
+    "type": "relation",
+    "description": "关联视频id（关联作品一览表）",
+    "label": "关联视频id",
+    "relation": {
+      "database_id": "25d5e518-7e7c-8138-8f65-c85786a3da89",
+      "single_property": {}
+    },
+    "is_displayed": true
+  },
+  {
+    "order": 7,
+    "name": "work_id_count",
+    "type": "rollup",
+    "description": "视频数量（由作品一览表 Rollup 统计）",
+    "label": "关联视频数量",
+    "rollup": {
+      "relation_property_name": "关联视频id",
+      "rollup_property_name": "作品标题",
+      "function": "count"
+    },
+    "is_displayed": true
+  },
+  {
+    "order": 8,
+    "name": "title_list",
+    "type": "rollup",
+    "description": "关联视频标题（由作品一览表 Rollup 统计）",
+    "label": "关联视频标题",
+    "is_displayed": true,
+    "rollup": {
+      "relation_property_name": "关联视频id",
+      "rollup_property_name": "作品标题",
+      "function": "show_original"
+    }
+  },
+  {
+    "order": 8,
+    "name": "share_url_list",
+    "type": "rollup",
+    "description": "关联视频分享链接（由作品一览表 Rollup 统计）",
+    "label": "关联视频分享链接",
+    "is_displayed": true,
+    "rollup": {
+      "relation_property_name": "关联视频id",
+      "rollup_property_name": "主链接",
+      "function": "show_original"
+    }
+  },
+  {
+    "order": 9,
+    "name": "co_operators",
+    "type": "multi_select",
+    "description": "合作信息（导演/主演/嘉宾/编剧等）",
+    "label": "合作信息",
+    "is_displayed": true
+  }
+]

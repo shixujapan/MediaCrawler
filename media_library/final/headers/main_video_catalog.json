@@ -1,0 +1,201 @@
+[
+  {
+    "order": 0,
+    "name": "work_id",
+    "type": "title",
+    "description": "作品唯一ID（跨平台）",
+    "label": "视频ID",
+    "is_displayed": true
+  },
+  {
+    "order": 1,
+    "name": "series_id",
+    "type": "relation",
+    "description": "关联合集ID（多选可开）",
+    "label": "合集",
+    "is_displayed": false
+  },
+  {
+    "order": 2,
+    "name": "title",
+    "type": "rich_text",
+    "description": "原始视频标题",
+    "label": "作品标题",
+    "is_displayed": true
+  },
+  {
+    "order": 3,
+    "name": "author",
+    "type": "rich_text",
+    "description": "发布账号名（主账号或作品归属）",
+    "label": "账号名",
+    "is_displayed": true
+  },
+  {
+    "order": 4,
+    "name": "desc",
+    "type": "rich_text",
+    "description": "视频简介",
+    "label": "简介",
+    "is_displayed": true
+  },
+  {
+    "order": 5,
+    "name": "content_type",
+    "type": "rich_text",
+    "description": "内容类型（短剧/vlog/宣传等）",
+    "label": "内容类型",
+    "is_displayed": false
+  },
+  {
+    "order": 6,
+    "name": "content_theme",
+    "type": "rich_text",
+    "description": "内容主题（励志/古装/成长等）",
+    "label": "主题",
+    "is_displayed": false
+  },
+  {
+    "order": 7,
+    "name": "co_operators",
+    "type": "multi_select",
+    "description": "合作信息（导演/主演/嘉宾/编剧等）",
+    "label": "合作信息",
+    "is_displayed": true
+  },
+  {
+    "order": 8,
+    "name": "tags",
+    "type": "rich_text",
+    "description": "关键词",
+    "label": "关键词",
+    "is_displayed": true
+  },
+  {
+    "order": 9,
+    "name": "bgm",
+    "type": "url",
+    "description": "背景音乐",
+    "label": "BGM",
+    "is_displayed": false
+  },
+  {
+    "order": 10,
+    "name": "first_pubdate",
+    "type": "rollup",
+    "description": "首发日期（由平台表MIN发布时间Rollup）",
+    "label": "首发日期",
+    "is_displayed": true,
+    "rollup": {
+      "relation_property_name": "各平台分发视频汇总",
+      "rollup_property_name": "发布日期",
+      "function": "earliest_date"
+    }
+  },
+  {
+    "order": 11,
+    "name": "share_url",
+    "type": "url",
+    "description": "主展示链接",
+    "label": "主链接",
+    "is_displayed": true
+  },
+  {
+    "order": 12,
+    "name": "cover_url",
+    "type": "url",
+    "description": "主封面",
+    "label": "主封面",
+    "is_displayed": false
+  },
+  {
+    "order": 13,
+    "name": "total_views",
+    "type": "rollup",
+    "description": "总播放/浏览（平台表汇总）",
+    "label": "总播放",
+    "is_displayed": true,
+    "rollup": {
+      "relation_property_name": "各平台分发视频汇总",
+      "rollup_property_name": "播放量/浏览数",
+      "function": "sum"
+    }
+  },
+  {
+    "order": 14,
+    "name": "total_likes",
+    "type": "rollup",
+    "description": "总点赞（平台表汇总）",
+    "label": "总点赞",
+    "is_displayed": true,
+    "rollup": {
+      "relation_property_name": "各平台分发视频汇总",
+      "rollup_property_name": "点赞",
+      "function": "sum"
+    }
+  },
+  {
+    "order": 15,
+    "name": "total_comments",
+    "type": "rollup",
+    "description": "总评论（平台表汇总）",
+    "label": "总评论",
+    "is_displayed": true,
+    "rollup": {
+      "relation_property_name": "各平台分发视频汇总",
+      "rollup_property_name": "评论",
+      "function": "sum"
+    }
+  },
+  {
+    "order": 16,
+    "name": "total_shares",
+    "type": "rollup",
+    "description": "总转发（平台表汇总）",
+    "label": "总转发",
+    "is_displayed": true,
+    "rollup": {
+      "relation_property_name": "各平台分发视频汇总",
+      "rollup_property_name": "转发",
+      "function": "sum"
+    }
+  },
+  {
+    "order": 17,
+    "name": "total_favorites",
+    "type": "rollup",
+    "description": "总收藏（平台表汇总）",
+    "label": "总收藏",
+    "is_displayed": true,
+    "rollup": {
+      "relation_property_name": "各平台分发视频汇总",
+      "rollup_property_name": "收藏",
+      "function": "sum"
+    }
+  },
+  {
+    "order": 18,
+    "name": "platform_count",
+    "type": "rollup",
+    "description": "分发平台数（关联计数）",
+    "label": "视频分发平台数",
+    "is_displayed": true,
+    "rollup": {
+      "relation_property_name": "各平台分发视频汇总",
+      "rollup_property_name": "视频原标题",
+      "function": "count"
+    }
+  },
+  {
+    "order": 19,
+    "name": "link_list",
+    "type": "relation",
+    "description": "各平台分发视频汇总",
+    "label": "各平台分发视频汇总",
+    "is_displayed": true,
+    "relation": {
+      "database_id": "25b5e518-7e7c-811a-b79c-c0b216c39be7",
+      "single_property": {}
+    }
+  }
+]
