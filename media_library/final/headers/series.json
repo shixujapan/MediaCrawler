@@ -105,5 +105,13 @@
     "description": "合作信息（导演/主演/嘉宾/编剧等）",
     "label": "合作信息",
     "is_displayed": true
+  },
+  {
+    "order": 10,
+    "name": "cover",
+    "type": "cover",
+    "description": "封面图链接",
+    "label": "封面图",
+    "is_displayed": true
   }
 ]

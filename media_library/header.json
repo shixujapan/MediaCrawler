@@ -1,0 +1,102 @@
+[
+  {
+    "order": 0,
+    "name": "uuid"
+  },
+  {
+    "order": 1,
+    "name": "source_id"
+  },
+  {
+    "order": 2,
+    "name": "视频原标题"
+  },
+  {
+    "order": 3,
+    "name": "发布者"
+  },
+  {
+    "order": 4,
+    "name": "发布平台"
+  },
+  {
+    "order": 5,
+    "name": "发布日期"
+  },
+  {
+    "order": 6,
+    "name": "视频时长"
+  },
+  {
+    "order": 7,
+    "name": "分辨率"
+  },
+  {
+    "order": 8,
+    "name": "视频比例"
+  },
+  {
+    "order": 9,
+    "name": "内容类型"
+  },
+  {
+    "order": 10,
+    "name": "时代背景"
+  },
+  {
+    "order": 11,
+    "name": "内容主题"
+  },
+  {
+    "order": 12,
+    "name": "简介"
+  },
+  {
+    "order": 13,
+    "name": "合作信息"
+  },
+  {
+    "order": 14,
+    "name": "BGM"
+  },
+  {
+    "order": 15,
+    "name": "分享链接"
+  },
+  {
+    "order": 16,
+    "name": "下载链接"
+  },
+  {
+    "order": 17,
+    "name": "关联合集"
+  },
+  {
+    "order": 18,
+    "name": "播放量/浏览数"
+  },
+  {
+    "order": 19,
+    "name": "点赞数"
+  },
+  {
+    "order": 20,
+    "name": "评论数"
+  },
+  {
+    "order": 21,
+    "name": "转发数"
+  },
+  {
+    "order": 22,
+    "name": "收藏数"
+  },
+  {
+    "order": 23,
+    "name": "封面图"
+  },
+  {
+    "order": 24,
+    "name": "关键词"
+  }
+]

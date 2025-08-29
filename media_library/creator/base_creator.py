@@ -29,6 +29,8 @@ class BaseCreator(ABC):
 
     def parse_chinese_number(self, s):
         s = s.strip()
+        if s.endswith("亿"):
+            return int(float(s[:-1]) * 100_000_000)
         if s.endswith("万"):
             return int(float(s[:-1]) * 10000)
         elif s.endswith("千"):

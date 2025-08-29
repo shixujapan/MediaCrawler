@@ -193,9 +193,14 @@ class NotionAsync:
                 resp.raise_for_status()
                 return resp
 
-    async def create_page(self, db_id: str, properties: Mapping[str, Any]) -> str:
+    async def create_page(self, db_id: str, cover: str, properties: Mapping[str, Any]) -> str:
         url = f"{API_BASE}/pages"
-        body = {"parent": {"database_id": db_id}, "properties": dict(properties)}
+
+        if not cover:
+            body = {"parent": {"database_id": db_id}, "properties": dict(properties)}
+        else:
+            body = {"parent": {"database_id": db_id}, "cover": {"external": {"url": cover}}, "properties": dict(properties)}
+        
         print(body)
         r = await self._request("POST", url, json=body)
         return r.json().get("id", "")
@@ -406,8 +411,9 @@ async def create_main_row(
         if rel_payload:
             header, payload = rel_payload
             props[header] = payload
-
-    page_id = await client.create_page(main_db_id, props)
+    
+    cover = row.get("cover")
+    page_id = await client.create_page(main_db_id, cover, props)
     log.debug("[NEW] %s -> %s (page_id=%s)", main_title_label, title_value, page_id)
     return True
 

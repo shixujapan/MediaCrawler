@@ -22,6 +22,7 @@ import argparse, json, re, unicodedata
 from pathlib import Path
 from typing import Any, List, Tuple, Set
 import pandas as pd
+from datetime import datetime
 
 # ========= Regex =========
 TAG_INLINE_RE = re.compile(r"#([A-Za-z0-9_\u4e00-\u9fff]+)")
@@ -415,7 +416,7 @@ def main():
     ap = argparse.ArgumentParser(description="Process tags/co_operators with GLOBAL coop set & role extraction (JSON-driven).")
     ap.add_argument("--input", required=True, help="Input CSV path")
     ap.add_argument("--rules", required=True, help="rules.json path")
-    ap.add_argument("--output", help="Output CSV path")
+    ap.add_argument("--outdir", required=True, help="Output CSV directory")
     ap.add_argument("--tags-overview", help="Write tags overview (txt)")
     ap.add_argument("--coops-overview", help="Write co_operators overview (txt)")
     ap.add_argument("--skip-ids", help="Comma-separated link ids to skip (e.g., 'a,b,c')", default=None)
@@ -439,10 +440,15 @@ def main():
         df, stop_words, coop_rules, args.id_col, skip_set
     )
 
-    if args.output:
-        out_path = Path(args.output)
-        df_proc.to_csv(out_path, index=False)
-        print(f"[OK] Wrote cleaned CSV -> {out_path}")
+    date_str = datetime.now().strftime("%Y%m%d")
+    outdir = Path(args.outdir)
+    df_proc.to_csv(outdir / f"platform_links_normalized_{date_str}.csv", index=False)
+    print(f"[OK] Wrote cleaned CSV -> {outdir / f'platform_links_normalized_{date_str}.csv'}")
+
+    records = df_proc.to_json(orient="records", force_ascii=False, indent=2)
+    with open(outdir / f"platform_links_normalized_{date_str}.json", "w", encoding="utf-8") as f:
+        f.write(records)
+    print(f"[OK] Wrote cleaned JSON -> {outdir / f'platform_links_normalized_{date_str}.json'}")
 
     if args.tags_overview:
         Path(args.tags_overview).write_text("\n".join(tags_overview), encoding="utf-8")
@@ -452,7 +458,7 @@ def main():
         Path(args.coops_overview).write_text("\n".join(coops_overview), encoding="utf-8")
         print(f"[OK] Wrote co_operators overview -> {args.coops_overview}")
 
-    if not (args.output or args.tags_overview or args.coops_overview):
+    if not (args.outdir or args.tags_overview or args.coops_overview):
         print("tags_overview:", tags_overview)
         print("co_operators_overview:", coops_overview)
 

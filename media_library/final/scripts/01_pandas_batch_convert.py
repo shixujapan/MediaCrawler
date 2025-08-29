@@ -328,7 +328,8 @@ def main(input_csv: Path, outdir: Path, uuid_map: Optional[Path],
     else:
         print("[Filter] No filter applied (missing --filter-cols or --filter-keys).")
 
-    norm_csv = outdir / "platform_links.csv"
+    date_str = datetime.now().strftime("%Y%m%d")
+    norm_csv = outdir / f"platform_links_{date_str}.csv"
     norm.to_csv(norm_csv, index=False, encoding="utf-8")
     print(f"Saved: {norm_csv} (rows={len(norm)})")
 
@@ -341,7 +342,7 @@ if __name__ == "__main__":
     # filtering options
     ap.add_argument("--filter-cols", type=str, default="title,tags",
                     help="Comma-separated normalized column names to search (default: title,tags)")
-    ap.add_argument("--filter-keys", type=str, default="圻夏夏",
+    ap.add_argument("--filter-keys", type=str, default="圻夏夏,东栏学,长公主在上",
                     help="Comma-separated keywords (default: 圻夏夏)")
     ap.add_argument("--keyword-mode", choices=["any", "all"], default="any",
                     help="'any' = any keyword matches; 'all' = all keywords must match")

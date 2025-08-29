@@ -20,8 +20,9 @@ Generate works & series JSON/CSV from schemas, records and link-groups JSON.
 """
 
 import json, hashlib, datetime, pytz, argparse, re, csv
-from typing import List, Dict, Any, Tuple, Iterable
+from typing import List, Dict, Any, Iterable
 from collections import OrderedDict as OD
+from pathlib import Path
 
 
 # ----------------- schema helpers -----------------
@@ -123,6 +124,7 @@ def parse_link_groups(link_groups: Any) -> List[Dict[str, Any]]:
         desc = s.get("desc", "")
         tags = s.get("tags", "")
         coops = s.get("co_operators", "")
+        cover = s.get("cover", "")
         groups = []
         if isinstance(s.get("groups"), list):
             groups = s["groups"]
@@ -139,7 +141,7 @@ def parse_link_groups(link_groups: Any) -> List[Dict[str, Any]]:
             gid = g.get("id")
             lids = g.get("duplicated_id_list", [])
             ngroups.append({"id": gid, "duplicated_id_list": lids})
-        norm.append({"series_name": sname, "desc": desc, "tags": tags, "co_operators": coops, "groups": ngroups})
+        norm.append({"series_name": sname, "desc": desc, "tags": tags, "co_operators": coops, "cover": cover, "groups": ngroups})
     return norm
 
 
@@ -172,6 +174,7 @@ def generate_series(schema2: List[Dict[str, Any]],
         "desc": s.get("desc", ""),
         "tags": s.get("tags", ""),
         "co_operators": s.get("co_operators", ""),
+        "cover": s.get("cover", ""),
     } for s in series_groups}
 
     series_rows = []
@@ -180,6 +183,7 @@ def generate_series(schema2: List[Dict[str, Any]],
         if "series_id" in out: out["series_id"] = md5_8(sname)
         if "series_name" in out: out["series_name"] = sname
         if "desc" in out: out["desc"] = meta.get(sname, {}).get("desc", "") or ""
+        if "cover" in out: out["cover"] = meta.get(sname, {}).get("cover", "") or ""
         if "tags" in out:
             seed_tags = meta.get(sname, {}).get("tags", "")
             merged_tags = merge_tags_alpha([seed_tags] + [w.get("tags", "") for w in works])
@@ -236,10 +240,7 @@ if __name__ == "__main__":
     p.add_argument("--series-schema", required=True)
     p.add_argument("--data", required=True)
     p.add_argument("--link-ids-file", required=True)
-    p.add_argument("--works-out", default="works_output.json")
-    p.add_argument("--series-out", default="series_output.json")
-    p.add_argument("--works-csv", default="works_output.csv")
-    p.add_argument("--series-csv", default="series_output.csv")
+    p.add_argument("--outdir", required=True)
     p.add_argument("--keep-meta", action="store_true", help="Keep _meta in works output for debugging")
     args = p.parse_args()
 
@@ -261,10 +262,10 @@ if __name__ == "__main__":
 
     series_rows = generate_series(schema2, series_map, link_groups)
 
-    with open(args.works_out, "w", encoding="utf-8") as f:
+    with open(Path(args.outdir) / "works.json", "w", encoding="utf-8") as f:
         json.dump(works_rows, f, ensure_ascii=False, indent=2)
-    with open(args.series_out, "w", encoding="utf-8") as f:
+    with open(Path(args.outdir) / "series.json", "w", encoding="utf-8") as f:
         json.dump(series_rows, f, ensure_ascii=False, indent=2)
 
-    save_csv(args.works_csv, works_rows)
-    save_csv(args.series_csv, series_rows)
+    save_csv(Path(args.outdir) / "works.csv", works_rows)
+    save_csv(Path(args.outdir) / "series.csv", series_rows)

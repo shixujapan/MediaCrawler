@@ -1,0 +1,59 @@
+[
+  {
+    "series_name": "鲛",
+    "desc": "纯情鲛人x傲娇人族",
+    "cover": "http://i1.hdslb.com/bfs/archive/5c65b1604763f6343d5951de0c675ff2f17e87c4.jpg",
+    "co_operators": "锦超",
+    "groups": [
+      {"id": 1, "duplicated_id_list": ["91d8dac4"]},
+      {"id": 2, "duplicated_id_list": ["c0b90b16"]}
+    ]
+  },
+  {
+    "series_name": "答案之书红色芍药篇",
+    "desc": "小狼崽弟弟x美艳钓系姐姐",
+    "cover": "http://i2.hdslb.com/bfs/archive/851d1ac5091783bcfa328876b81d08dd586520c3.jpg",
+    "co_operators": "锦超",
+    "groups": [
+      {"id": 1, "duplicated_id_list": ["b694a58b"]},
+      {"id": 2, "duplicated_id_list": ["fd284d1e"]},
+      {"id": 3, "duplicated_id_list": ["7737cdeb"]},
+      {"id": 4, "duplicated_id_list": ["dc1751bc"]},
+      {"id": 5, "duplicated_id_list": ["516f8d94"]}
+    ]
+  },
+  {
+    "series_name": "母爱变质养成系【YSL】",
+    "desc": "永生洒脱女长老x心机年下小奶狗",
+    "co_operators": "锦超",
+    "cover": "http:\/\/i2.hdslb.com\/bfs\/archive\/3b9c55fa0d2471f764fa4337eafaa28ed866926f.jpg",
+    "groups": [
+      {"id": 1, "duplicated_id_list": ["e6917dc7"]},
+      {"id": 2, "duplicated_id_list": ["f4b8eb4d"]},
+      {"id": 3, "duplicated_id_list": ["ac20c0b9"]},
+      {"id": 4, "duplicated_id_list": ["a1fa4e09"]},
+      {"id": 5, "duplicated_id_list": ["c5416a02"]},
+      {"id": 6, "duplicated_id_list": ["4e5af458","52a1ced4","6f79afe8"]},
+      {"id": 7, "duplicated_id_list": ["7f351845", "45466ede", "2461eba0"]},
+      {"id": 8, "duplicated_id_list": ["f634caa8", "5d8a4d80"]},
+      {"id": 9, "duplicated_id_list": ["decd5b44","66b56830", "5d50c616"]}
+    ]
+  },
+  {
+    "series_name": "替身文学",
+    "desc": "病娇阴鸷王爷x雪山圣女",
+    "co_operators": "锦超",
+    "cover": "http:\/\/i2.hdslb.com\/bfs\/archive\/0e112bb72fbfdea2d8a9731d1b6d007fbfc37a35.jpg",
+    "groups": [
+      {"id": 1, "duplicated_id_list": ["6e235b36"]},
+      {"id": 2, "duplicated_id_list": ["ad6d57af"]},
+      {"id": 3, "duplicated_id_list": ["806983df","9cd35342","eb45d53e","f3780e07"]},
+      {"id": 4, "duplicated_id_list": ["d49c734e","35061e4e","0c117e7e","d9d3d39c"]},
+      {"id": 5, "duplicated_id_list": ["fd2f4ab9", "ad647315","003ace99","8d226b73"]},
+      {"id": 6, "duplicated_id_list": ["84230b89","6c1fef80","5ed2c49d"]},
+      {"id": 7, "duplicated_id_list": ["989fd0f9", "16486f4a", "2db85740", "66d1acb9"]},
+      {"id": 8, "duplicated_id_list": ["c1253c0b", "5371b88b", "09eecf57", "fd96a2bb"]},
+      {"id": 9, "duplicated_id_list": ["bd1ee345","4f116e8d", "045f7402"]}
+    ]
+  }
+]
