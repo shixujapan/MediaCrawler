@@ -27,8 +27,15 @@ DY_SPECIFIED_ID_LIST = [
 
 # 指定DY用户ID列表
 DY_CREATOR_ID_LIST = [
-    "MS4wLjABAAAAXHMxuya3n3FBxUkEK2kovUyTKMyRrZrjk-4lt6hcgZ4",
-    "MS4wLjABAAAAwNznut9C9KSLFvs85j_gEHjvIsBQqE47DCztkdzjCIE"
-    # "MS4wLjABAAAATJPY7LAlaa5X-c8uNdWkvz0jUGgpw4eeXIwu_8BhvqE",
+    # 圻夏夏
+    # "MS4wLjABAAAAXHMxuya3n3FBxUkEK2kovUyTKMyRrZrjk-4lt6hcgZ4",
+    # 圻夏夏唉
+    # "MS4wLjABAAAAwNznut9C9KSLFvs85j_gEHjvIsBQqE47DCztkdzjCIE"
+    # 知竹zZ
+    "MS4wLjABAAAApdwNxfp2mrKC8cXyd5xspfpyR3e1R3oipZWej_S7Jqc",
+    # 《出马》剧组
+    "MS4wLjABAAAAinbAK57lUmofF-FaAtoL9_aveRRFyzoaicRmlrjl_Q0mJ-FVl0Mk0zyzq5omrQj9",
+    # 盛世天下
+    "MS4wLjABAAAAfdIseG8SaYzFO-3OixvQnyoqr5kWPD2omfO4Ndn587H01wgFXqbY_6TiQN0m1f33"
     # ........................
 ]

@@ -27,6 +27,12 @@ KS_SPECIFIED_ID_LIST = [
 
 # 指定快手用户ID列表
 KS_CREATOR_ID_LIST = [
-    "3xctcpqmgpbdm7u",
+    # 
+    # 圻夏夏
+    # "3xctcpqmgpbdm7u",
+    # 知竹zZ
+    "3x4y7uzvqsk4syy",
+    # 盛世天下
+    "3xda2pit5ziikdm",
     # ........................
 ]

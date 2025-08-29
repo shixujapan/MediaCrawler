@@ -1,15 +1,25 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Pandas-based CSV -> normalized DataFrame -> Notion properties JSONL
+Pandas-based CSV -> normalized DataFrame -> Notion properties CSV
+Supports multi-column / multi-keyword filtering.
 
 Usage:
-  python pandas_batch_convert.py --input <in.csv> --outdir <dir> [--uuid-map <uuid_to_pageid.json>]
+  python pandas_batch_convert.py \
+    --input <in.csv> \
+    --outdir <dir> \
+    [--uuid-map <uuid_to_pageid.json>] \
+    [--filter-cols title,tags,author] \
+    [--filter-keys 盛世天下,古风] \
+    [--keyword-mode any|all] \
+    [--col-mode any|all] \
+    [--case-sensitive] \
+    [--regex]
 """
 from __future__ import annotations
-from typing import Any, Dict, Optional, Callable
+from typing import Any, Dict, Optional, List
 from datetime import datetime, timezone, timedelta
-import hashlib, re, json, argparse
+import hashlib, re, argparse
 from urllib.parse import urlparse, urlunparse
 from pathlib import Path
 import pandas as pd
@@ -53,20 +63,16 @@ PLATFORM_MAP: Dict[str, str] = {
 # TODO: Read from platform_links_final.json
 TARGET_FIELDS_ORDER = [
     "link_id",
-    # "video_uuid",
     "platform",
-    # "source_id",
     "share_url",
     "title",
     "pubdate",
-    # "is_primary",
     "view",
     "like",
     "reply",
     "share",
     "favorite",
     "cover_url",
-    # "download_url",
     "tags",
     "bgm",
     "co_operators",
@@ -125,7 +131,7 @@ def _parse_related_series(v: Any) -> Optional[str]:
     s = str(v).strip()
     if s == "":
         return None
-    # Keep only CJK characters
+    # Keep only CJK characters and ·
     return re.sub(r'[^\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF\u00B7]+', '', s)
 
 _DATE_PATTERNS = [
@@ -193,20 +199,24 @@ def _build_link_id(platform: Optional[str], source_id: Optional[str], share_url:
 
 # ---- Core transforms (vectorized via Series.apply) ----
 def normalize_dataframe(df: pd.DataFrame) -> pd.DataFrame:
-    # 1) Rename columns using aliases (keep others untouched)
+    # 1) Ensure expected columns exist; missing ones are created as empty
+    expected_cols: List[str] = list(COLUMN_ALIASES.keys())
+    for c in expected_cols:
+        if c not in df.columns:
+            df[c] = ""
+
+    # 2) Rename columns using aliases (keep others untouched)
     rename_map = {c: COLUMN_ALIASES.get(c, c) for c in df.columns}
     print(f"Renaming columns: {rename_map}")
-    df = df[COLUMN_ALIASES.keys()]
+    df = df[expected_cols].rename(columns=rename_map)
 
-    df = df.rename(columns=rename_map)
-
-    # 2) Compute target fields
+    # 3) Compute target fields
     out = pd.DataFrame(index=df.index)
     out["link_id"] = df.get("uuid").apply(_none_if_blank)
     out["platform"] = df.get("platform").apply(_normalize_platform)
     out["share_url"] = df.get("share_url").apply(_normalize_url)
     out["title"] = df.get("title").apply(_none_if_blank)
-    out["pubdate"] = df.get("pubdate")
+    out["pubdate"] = df.get("pubdate").apply(_parse_pubdate)
     out["view"] = df.get("view").apply(_parse_count)
     out["like"] = df.get("like").apply(_parse_count)
     out["reply"] = df.get("reply").apply(_parse_count)
@@ -218,93 +228,137 @@ def normalize_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     out["co_operators"] = df.get("co_operators").apply(_none_if_blank)
     out["author"] = df.get("author").apply(_none_if_blank)
     out["related_series"] = df.get("related_series").apply(_parse_related_series)
-    # out["download_url"] = df.get("download_url").apply(_normalize_url)
-    # out["is_primary"] = False
 
-    # 3) Reorder columns
+    # 4) Reorder columns
     out = out[TARGET_FIELDS_ORDER]
     return out
 
-# def notion_properties_row(record: Dict[str, Any],
-#                           uuid_to_pageid: Callable[[Optional[str]], Optional[str]] | None = None) -> Dict[str, Any]:
-#     props: Dict[str, Any] = {}
-#     if record.get("link_id"):
-#         props["链接ID"] = {"title": [{"text": {"content": str(record["link_id"])}}]}
-#     if uuid_to_pageid:
-#         pid = uuid_to_pageid(record.get("video_uuid"))
-#         if pid:
-#             props["视频UUID"] = {"relation": [{"id": pid}]}
-#     if record.get("platform"):
-#         props["发布平台"] = {"select": {"name": record["platform"]}}
+# ---- Filtering ----
+def build_filter_mask(
+    df: pd.DataFrame,
+    cols: List[str],
+    keys: List[str],
+    keyword_mode: str = "any",
+    col_mode: str = "any",
+    case_sensitive: bool = False,
+    use_regex: bool = False,
+) -> pd.Series:
+    """
+    Returns a boolean mask for df based on text containment across columns and keywords.
+    - keyword_mode: 'any' = match if any keyword matches within a column; 'all' = all keywords must match within the column
+    - col_mode: 'any' = any of the specified columns may satisfy; 'all' = all specified columns must satisfy
+    """
+    if not cols or not keys:
+        return pd.Series([True] * len(df), index=df.index)
 
-#     def rt(name, val):
-#         if val:
-#             props[name] = {"rich_text": [{"text": {"content": str(val)}}]}
-#     def url(name, val):
-#         if val:
-#             props[name] = {"url": val}
-#     def num(name, val):
-#         if val is not None:
-#             props[name] = {"number": float(val)}
-#     def date(name, val_iso):
-#         if val_iso:
-#             props[name] = {"date": {"start": val_iso}}
-#     def cb(name, val_bool):
-#         if val_bool is not None:
-#             props[name] = {"checkbox": bool(val_bool)}
+    # Only keep existing columns
+    cols = [c for c in cols if c in df.columns]
+    if not cols:
+        print("[Filter] None of the specified columns exist in the normalized DataFrame; skipping filter.")
+        return pd.Series([True] * len(df), index=df.index)
 
-#     rt("source_id", record.get("source_id"))
-#     url("分享链接", record.get("share_url"))
-#     rt("视频原标题", record.get("title"))
-#     date("发布日期", record.get("pubdate"))
-#     cb("主平台", record.get("is_primary"))
-#     num("播放", record.get("views"))
-#     num("点赞", record.get("likes"))
-#     num("评论", record.get("comments"))
-#     num("转发", record.get("shares"))
-#     num("收藏", record.get("favorites"))
-#     url("平台封面", record.get("cover_url_platform"))
-#     url("下载链接", record.get("download_url"))
-#     return props
+    # Prepare per-column masks according to keyword_mode
+    per_col_masks: List[pd.Series] = []
 
-# def load_uuid_map(path: Optional[Path]) -> Callable[[Optional[str]], Optional[str]]:
-#     if path and path.exists():
-#         mapping = json.loads(Path(path).read_text(encoding="utf-8"))
-#         def _map(u: Optional[str]) -> Optional[str]:
-#             if not u:
-#                 return None
-#             return mapping.get(u)
-#         return _map
-#     return lambda _u: None
+    if use_regex:
+        patterns = keys  # treat as regex
+        def contains_any(series: pd.Series) -> pd.Series:
+            mask = pd.Series(False, index=series.index)
+            for pat in patterns:
+                mask = mask | series.astype(str).str.contains(pat, case=case_sensitive, regex=True, na=False)
+            return mask
+        def contains_all(series: pd.Series) -> pd.Series:
+            mask = pd.Series(True, index=series.index)
+            for pat in patterns:
+                mask = mask & series.astype(str).str.contains(pat, case=case_sensitive, regex=True, na=False)
+            return mask
+    else:
+        # escape keywords to literal matches
+        escaped = [re.escape(k) for k in keys]
+        # compile once as OR for "any" path
+        or_pattern = "|".join(escaped)
+        def contains_any(series: pd.Series) -> pd.Series:
+            return series.astype(str).str.contains(or_pattern, case=case_sensitive, regex=True, na=False)
+        def contains_all(series: pd.Series) -> pd.Series:
+            # all keywords must appear (as literals)
+            mask = pd.Series(True, index=series.index)
+            for pat in escaped:
+                mask = mask & series.astype(str).str.contains(pat, case=case_sensitive, regex=True, na=False)
+            return mask
 
-def main(input_csv: Path, outdir: Path, uuid_map: Optional[Path]) -> None:
+    per_col_func = contains_any if keyword_mode.lower() == "any" else contains_all
+
+    for c in cols:
+        per_col_masks.append(per_col_func(df[c]))
+
+    if col_mode.lower() == "all":
+        final_mask = per_col_masks[0]
+        for m in per_col_masks[1:]:
+            final_mask = final_mask & m
+    else:  # any
+        final_mask = per_col_masks[0]
+        for m in per_col_masks[1:]:
+            final_mask = final_mask | m
+
+    return final_mask
+
+# ---- CLI / Main ----
+def main(input_csv: Path, outdir: Path, uuid_map: Optional[Path],
+         filter_cols: Optional[str], filter_keys: Optional[str],
+         keyword_mode: str, col_mode: str,
+         case_sensitive: bool, use_regex: bool) -> None:
+
     outdir.mkdir(parents=True, exist_ok=True)
-    df = pd.read_csv(input_csv, dtype=str).fillna("")
-    norm = normalize_dataframe(df)
+    df_raw = pd.read_csv(input_csv, dtype=str).fillna("")
+    norm = normalize_dataframe(df_raw)
 
-    # Save normalized JSONL
-    # norm_path = outdir / "normalized.jsonl"
-    # with norm_path.open("w", encoding="utf-8") as f:
-    #     for _, row in norm.iterrows():
-    #         f.write(json.dumps(row.to_dict(), ensure_ascii=False) + "\n")
+    # Apply filtering (on normalized columns)
+    cols_list = [c.strip() for c in (filter_cols or "").split(",") if c.strip()] if filter_cols else []
+    keys_list = [k.strip() for k in (filter_keys or "").split(",") if k.strip()] if filter_keys else []
 
-    # # Save notion properties JSONL
-    # uuid_mapper = load_uuid_map(uuid_map)
-    # props_path = outdir / "notion_properties.jsonl"
-    # with props_path.open("w", encoding="utf-8") as f:
-    #     for _, row in norm.iterrows():
-    #         props = notion_properties_row(row.to_dict(), uuid_to_pageid=uuid_mapper)
-    #         f.write(json.dumps(props, ensure_ascii=False) + "\n")
+    if cols_list and keys_list:
+        mask = build_filter_mask(
+            norm, cols_list, keys_list,
+            keyword_mode=keyword_mode, col_mode=col_mode,
+            case_sensitive=case_sensitive, use_regex=use_regex
+        )
+        before, after = len(norm), int(mask.sum())
+        print(f"[Filter] Rows before: {before}, after: {after} (kept {after}/{before})")
+        norm = norm[mask].copy()
+    else:
+        print("[Filter] No filter applied (missing --filter-cols or --filter-keys).")
 
-    # Optional: also save a CSV preview of normalized
     norm_csv = outdir / "platform_links.csv"
     norm.to_csv(norm_csv, index=False, encoding="utf-8")
+    print(f"Saved: {norm_csv} (rows={len(norm)})")
 
 if __name__ == "__main__":
-    import argparse
     ap = argparse.ArgumentParser()
     ap.add_argument("--input", required=True, type=Path)
     ap.add_argument("--outdir", required=True, type=Path)
     ap.add_argument("--uuid-map", type=Path, default=None)
+
+    # filtering options
+    ap.add_argument("--filter-cols", type=str, default="title,tags",
+                    help="Comma-separated normalized column names to search (default: title,tags)")
+    ap.add_argument("--filter-keys", type=str, default="圻夏夏",
+                    help="Comma-separated keywords (default: 圻夏夏)")
+    ap.add_argument("--keyword-mode", choices=["any", "all"], default="any",
+                    help="'any' = any keyword matches; 'all' = all keywords must match")
+    ap.add_argument("--col-mode", choices=["any", "all"], default="any",
+                    help="'any' = any column may satisfy; 'all' = every specified column must satisfy")
+    ap.add_argument("--case-sensitive", action="store_true",
+                    help="Enable case-sensitive matching")
+    ap.add_argument("--regex", action="store_true",
+                    help="Treat keywords as regex patterns")
+
     args = ap.parse_args()
-    main(args.input, args.outdir, args.uuid_map)
+    main(
+        args.input, args.outdir, args.uuid_map,
+        args.filter_cols,
+        args.filter_keys,
+        args.keyword_mode,
+        args.col_mode,
+        args.case_sensitive,
+        args.regex,
+    )
