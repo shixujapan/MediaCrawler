@@ -461,6 +461,7 @@ class XiaoHongShuCrawler(AbstractCrawler):
             if not url:
                 continue
             content = await self.xhs_client.get_note_media(url)
+            await asyncio.sleep(random.random())
             if content is None:
                 continue
             extension_file_name = f"{picNum}.jpg"
@@ -484,6 +485,7 @@ class XiaoHongShuCrawler(AbstractCrawler):
         videoNum = 0
         for url in videos:
             content = await self.xhs_client.get_note_media(url)
+            await asyncio.sleep(random.random())
             if content is None:
                 continue
             extension_file_name = f"{videoNum}.mp4"
