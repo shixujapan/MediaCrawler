@@ -134,69 +134,6 @@ def _parse_related_series(v: Any) -> Optional[str]:
     # Keep only CJK characters and ·
     return re.sub(r'[^\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF\u00B7]+', '', s)
 
-_DATE_PATTERNS = [
-    "%Y-%m-%d",
-    "%Y/%m/%d",
-    "%Y.%m.%d",
-    "%Y-%m-%d %H:%M:%S",
-    "%Y/%m/%d %H:%M:%S",
-    "%Y.%m.%d %H:%M:%S",
-]
-
-def _parse_human_date(s: str) -> Optional[str]:
-    s = s.strip()
-    s = re.sub(r"年|\.|/", "-", s)
-    s = s.replace("月", "-").replace("日", "")
-    s = re.sub(r"\s+", " ", s).strip()
-    for pat in _DATE_PATTERNS:
-        try:
-            dt = datetime.strptime(s, pat.replace("/", "-").replace(".", "-"))
-            if dt.tzinfo is None:
-                dt = dt.replace(tzinfo=TZ_BEIJING)
-            return dt.astimezone(TZ_BEIJING).isoformat()
-        except ValueError:
-            continue
-    return None
-
-def _parse_pubdate(v: Any) -> Optional[str]:
-    if v is None:
-        return None
-    s = str(v).strip()
-    if s == "":
-        return None
-    if re.fullmatch(r"-?\d+", s):
-        try:
-            n = int(s)
-            if n >= 10**18:
-                dt = datetime.fromtimestamp(n / 1_000_000_000, TZ_BEIJING)
-            elif n > 10**13:
-                dt = datetime.fromtimestamp(n / 1_000_000, TZ_BEIJING)
-            elif n > 10**11:
-                dt = datetime.fromtimestamp(n / 1000, TZ_BEIJING)
-            else:
-                dt = datetime.fromtimestamp(n, TZ_BEIJING)
-            return dt.isoformat()
-        except Exception:
-            pass
-    try:
-        dt = datetime.fromisoformat(s)
-        if dt.tzinfo is None:
-            dt = dt.replace(tzinfo=TZ_BEIJING)
-        return dt.astimezone(TZ_BEIJING).isoformat()
-    except Exception:
-        pass
-    return _parse_human_date(s)
-
-def _build_link_id(platform: Optional[str], source_id: Optional[str], share_url: Optional[str]) -> Optional[str]:
-    platform = (platform or "").strip()
-    source_id = (source_id or "").strip()
-    if platform and source_id:
-        return f"{platform}:{source_id}"
-    if platform and share_url:
-        h = hashlib.sha1(share_url.encode("utf-8")).hexdigest()[:12]
-        return f"{platform}:u:{h}"
-    return None
-
 # ---- Core transforms (vectorized via Series.apply) ----
 def normalize_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     # 1) Ensure expected columns exist; missing ones are created as empty
@@ -216,7 +153,7 @@ def normalize_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     out["platform"] = df.get("platform").apply(_normalize_platform)
     out["share_url"] = df.get("share_url").apply(_normalize_url)
     out["title"] = df.get("title").apply(_none_if_blank)
-    out["pubdate"] = df.get("pubdate").apply(_parse_pubdate)
+    out["pubdate"] = df.get("pubdate")
     out["view"] = df.get("view").apply(_parse_count)
     out["like"] = df.get("like").apply(_parse_count)
     out["reply"] = df.get("reply").apply(_parse_count)

@@ -77,7 +77,7 @@ def merge_coops_alpha(coops_list: List[str]) -> str:
     for raw in coops_list:
         tokens.extend(_split_tokens(raw))
     merged = _merge_tokens_sorted([tokens])
-    return "、".join(merged) if merged else ""
+    return ",".join(merged) if merged else ""
 
 
 # ----------------- works generation -----------------
@@ -159,6 +159,7 @@ def generate_works(schema1: List[Dict[str, Any]],
                 continue
             row = build_work_row(keys1, index, lids)
             row["_meta"] = {"series_name": sname, "group_id": g.get("id")}
+            row["title"] = str(g.get("id")) + ". <<" + row.get("title", "") + ">>"
             works.append(row)
             series_map.setdefault(sname, []).append(row)
     return works, series_map
@@ -238,18 +239,33 @@ if __name__ == "__main__":
     p = argparse.ArgumentParser(description="Generate works & series JSON/CSV.")
     p.add_argument("--schema", required=True)
     p.add_argument("--series-schema", required=True)
-    p.add_argument("--data", required=True)
+    p.add_argument("--inputdir", required=True)
+    p.add_argument("--inputfiles", required=True)
     p.add_argument("--link-ids-file", required=True)
     p.add_argument("--outdir", required=True)
     p.add_argument("--keep-meta", action="store_true", help="Keep _meta in works output for debugging")
     args = p.parse_args()
 
+    input_dir = Path(args.inputdir)
+    input_files = args.inputfiles.split(",")
+
+    records = []
+    for fname in input_files:
+        src = input_dir / fname
+        if not src.exists():
+            print(f"[WARN] Input file not found, skipping: {src}")
+            continue
+        with open(src, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        if not isinstance(data, list):
+            print(f"[WARN] Input file is not a list of records, skipping: {src}")
+            continue
+        records.extend(data)
+
     with open(args.schema, "r", encoding="utf-8") as f:
         schema1 = json.load(f)
     with open(args.series_schema, "r", encoding="utf-8") as f:
         schema2 = json.load(f)
-    with open(args.data, "r", encoding="utf-8") as f:
-        records = json.load(f)
     with open(args.link_ids_file, "r", encoding="utf-8") as f:
         link_groups_raw = json.load(f)
 

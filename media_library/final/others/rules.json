@@ -1,16 +1,67 @@
 {
   "stop_words": [
-    "圻夏夏"
+    "圻夏夏","我"
   ],
   "normalize_coop": [
-    { "pattern": "夏弃疾", "replacement": "夏弃疾（下乡版）" },
-    { "pattern": "庄翰", "replacement": "庄翰_Roya" },
-    { "pattern": "思思sr", "replacement": "思思Sr" },
-    { "pattern": "杨馥羽", "replacement": "杨馥羽" },
-    { "pattern": "锦超", "replacement": "锦超" },
-    { "pattern": "燕子坞主", "replacement": "燕子坞主" },
-    { "pattern": "圣微", "replacement": "圣微" },
-    { "pattern": "爱野", "replacement": "爱野" },
-    { "pattern": "君辞", "replacement": "君辞" }
+    {
+      "pattern": "夏弃疾",
+      "replacement": "夏弃疾(下乡版)"
+    },
+    {
+      "pattern": "庄翰",
+      "replacement": "庄翰_Roya"
+    },
+    {
+      "pattern": "思思sr",
+      "replacement": "思思Sr"
+    },
+    {
+      "pattern": "杨馥羽",
+      "replacement": "杨馥羽"
+    },
+    {
+      "pattern": "锦超",
+      "replacement": "锦超"
+    },
+    {
+      "pattern": "燕子坞主",
+      "replacement": "燕子坞主"
+    },
+    {
+      "pattern": "圣微",
+      "replacement": "圣微"
+    },
+    {
+      "pattern": "爱野",
+      "replacement": "爱野"
+    },
+    {
+      "pattern": "君辞",
+      "replacement": "君辞"
+    },
+    {
+      "pattern": "离弦",
+      "replacement": "离弦"
+    },
+    {
+      "pattern": "鹿荼白",
+      "replacement": "鹿荼白"
+    },
+    {
+      "pattern": "🐑杨馥羽",
+      "replacement": "杨馥羽"
+    }
+  ],
+  "titles": [
+    "出境","出镜","摄影","剪辑","衣服","服装","化妆","妆容","设定","摄/后","导/摄/后","拍摄","妆造",
+    "动作指导","发起人","导演","编剧","编导","策划","制作","监制","主演","主演/配音","配音",
+    "配音演员","配音导演","角色","角色扮演","角色/配音","角色/出境","角色/出镜","角色/扮演",
+    "角色/出演","角色/主演","角色/客串","扮演","出演","客串","嘉宾","特别出演","友情出演","友情客串",
+    "友情客串/出境","友情客串/出镜","友情客串/配音","友情出演/配音","友情出演/出境","友情出演/出镜",
+    "特别出演/配音","特别出演/出境","特别出演/出镜","导演/摄影/后期","配音","小娘子","公子","公子的娘子",
+    "只有半个脸的","👗","🎬","🧚‍♀️","🧚","💄","导演/编剧/摄影/灯光/剪辑/调色","拍摄/后期"
+  ],
+  "titles_ignore": [
+    "设定"
   ]
 }
