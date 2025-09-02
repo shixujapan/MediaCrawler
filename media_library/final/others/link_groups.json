@@ -1,5 +1,20 @@
 [
   {
+    "series_name": "双夏脑洞大开",
+    "desc": "圻夏夏x夏弃疾(下乡版)",
+    "groups":[
+      {"id": 1, "duplicated_id_list": ["22327b0b", "340a280c", "038b5e74", "9ccdc2ca"]},
+      {"id": 2, "duplicated_id_list": ["138a9ba9"]},
+      {"id": 3, "duplicated_id_list": ["46002ded", "4524f9bd", "0b5ecd6d", "8efa7cfe"]},
+      {"id": 4, "duplicated_id_list": ["201a7c53"]},
+      {"id": 5, "duplicated_id_list": ["f1ccd21d", "878956f8", "860d58a9", "161e2cee"]},
+      {"id": 6, "duplicated_id_list": ["1e3a8646"]},
+      {"id": 7, "duplicated_id_list": ["6284f6af"]},
+      {"id": 8, "duplicated_id_list": ["fdaa00d1"]},
+      {"id": 9, "duplicated_id_list": ["3cfbe8f3", "2be13c84"]}
+    ]
+  },
+  {
     "series_name": "鲛",
     "desc": "纯情鲛人x傲娇人族",
     "cover": "http://i1.hdslb.com/bfs/archive/5c65b1604763f6343d5951de0c675ff2f17e87c4.jpg",

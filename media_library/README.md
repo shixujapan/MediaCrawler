@@ -46,19 +46,19 @@ python 03_generate_work_series.py \
 
 
 python 05_add_main_with_relation_async.py \
---main-db-id 25d5e518-7e7c-8138-8f65-c85786a3da89  \
+--main-db-id 2605e518-7e7c-8180-8f94-e478bbd126d2  \
 --main-csv /Users/xu.shi/Downloads/圻夏夏/MediaCrawler/media_library/final/data/works.csv \
 --main-schema /Users/xu.shi/Downloads/圻夏夏/MediaCrawler/media_library/final/headers/main_video_catalog.json \
---related-db-id 25b5e518-7e7c-811a-b79c-c0b216c39be7 \
+--related-db-id 2605e518-7e7c-8172-b91e-c66c789e8e94 \
 --related-schema /Users/xu.shi/Downloads/圻夏夏/MediaCrawler/media_library/final/headers/platform_links.json \
 --ids-column link_list
 
 
 python 05_add_main_with_relation_async.py \
---main-db-id 25d5e518-7e7c-81f8-b077-f84db42604c3  \
+--main-db-id 2605e518-7e7c-812e-892b-f7ab2d8e3040  \
 --main-csv /Users/xu.shi/Downloads/圻夏夏/MediaCrawler/media_library/final/data/series.csv \
 --main-schema /Users/xu.shi/Downloads/圻夏夏/MediaCrawler/media_library/final/headers/series.json \
---related-db-id 25d5e518-7e7c-8138-8f65-c85786a3da89 \
+--related-db-id 2605e518-7e7c-8180-8f94-e478bbd126d2 \
 --related-schema /Users/xu.shi/Downloads/圻夏夏/MediaCrawler/media_library/final/headers/main_video_catalog.json \
 --ids-column work_id_list
 
