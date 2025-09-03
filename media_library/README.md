@@ -92,3 +92,7 @@ python3 /Users/xu.shi/Downloads/圻夏夏/MediaCrawler/media_library/final/scrip
   --query "出马" \
   --input "/Users/xu.shi/Downloads/圻夏夏/MediaCrawler/media_library/final/data/20250829/platform_links_normalized_20250829.csv,/Users/xu.shi/Downloads/圻夏夏/MediaCrawler/media_library/final/data/20250830/platform_links_normalized_20250831.csv" \
   --output "/Users/xu.shi/Downloads/圻夏夏/MediaCrawler/media_library/final/data/出马/search_results.json"
+
+  月白之时15集的LINK有问题打不开: https://www.kuaishou.com/short-video/3xbp7dyi2wfpfiu
+  黄雀在后合集: id2缺快手
+  抖音 合集·我的be小说男友 -> 合集·我的小说男友

@@ -1,5 +1,45 @@
 [
   {
+    "series_name":"窃心",
+    "desc": "笨蛋捕快x心机小贼",
+    "groups":[
+      {"id":1, "duplicated_id_list": ["2f4ccabb", "bdc032b3", "39bf3367", "56e32527"]},
+      {"id":2, "duplicated_id_list": ["f4a96dc1", "cf6243a9", "a54aa150"]}
+    ]
+  },
+  {
+    "series_name": "黄雀在后",
+    "desc": "呆萌树妖x腹黑道士",
+    "co_operators": "孝太,庄翰_Roya",
+    "cover": "https://i2.hdslb.com/bfs/archive/2b27d16726a7439373314d931f562e0ee1844e65.jpg",
+    "groups":[
+      {"id": 1, "duplicated_id_list": ["b8dc1ac4", "dd72c1ac", "65545cbd", "da2f86cc"]},
+      {"id": 2, "duplicated_id_list": ["59138feb", "b1cbb97e", "cde0c6f1"]},
+      {"id": 3, "duplicated_id_list": ["f5044eeb", "a9566914", "c648f5df"]}
+    ]
+  },
+  {
+    "series_name": "你嗑的CP是真的",
+    "cover": "https://i2.hdslb.com/bfs/archive/1dfdf0043649f2d6d137434c3a21e0e6fd0b3744.jpg",
+    "desc": "高冷顶流女明星x傻白甜女团爱豆 娱乐圈小甜饼 假戏真做",
+    "co_operators": "芝月",
+    "groups":[
+      {"id": 1, "duplicated_id_list": ["c36eac55"]},
+      {"id": 2, "duplicated_id_list": ["42c09c3a"]},
+      {"id": 3, "duplicated_id_list": ["fa2d62af"]}
+    ]
+  },
+  {
+    "series_name": "我的be小说男友",
+    "desc": "网文写手x小说男主",
+    "cover": "http://i1.hdslb.com/bfs/archive/5994ab9fdffb8369922f2273127527c8a59fb985.jpg",
+    "groups":[
+      {"id": 1, "duplicated_id_list": ["25611c6d", "e52de9b1", "dc45d498"]},
+      {"id": 2, "duplicated_id_list": ["f4b61076","624e8fd7","057136ca","cf4cb1a5"]},
+      {"id": 3, "duplicated_id_list": ["0c4989f", "7a27154a", "78f0b122", "ad8dd669"]}
+    ]
+  },
+  {
     "series_name": "双夏脑洞大开",
     "desc": "圻夏夏x夏弃疾(下乡版)",
     "groups":[
