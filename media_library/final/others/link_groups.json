@@ -1,10 +1,68 @@
 [
   {
+    "series_name": "节日特辑",
+    "desc":"中秋/兔年新春/牛年新春",
+    "cover": "http://i0.hdslb.com/bfs/archive/be1e6d18170703814a70b2b145596a80d087f918.jpg",
+    "groups":[
+      {"id":1, "duplicated_id_list": ["ca674812"]},
+      {"id":2, "duplicated_id_list": ["1dfe9df2","984a7e0e","19f4680e","984a7e0e"]},
+      {"id":3, "duplicated_id_list": ["0014848c"]}
+    ]
+  },
+  {
+    "series_name": "杀人魔姐弟的恋爱日常",
+    "desc":"伪骨科",
+    "co_operators":"玖柯9k",
+    "groups":[
+      {"id":1, "duplicated_id_list": ["910a6436", "90f392bc", "cb85cb4b", "6eeefd9d"]},
+      {"id":2, "duplicated_id_list": ["b826b534"]},
+      {"id":3, "duplicated_id_list": ["41a39975"]}
+    ]
+  },
+  {
+    "series_name":"致命温柔",
+    "desc":"杀机与心动纠缠,在这场猎人与猎物的游戏里,谁才是真正的掌控者？",
+    "co_operators":"朵声,玖柯9k",
+    "cover": "http://i2.hdslb.com/bfs/archive/2063e069d872d4b40e64bf131d3fd3a0d2fa1875.jpg",
+    "groups":[
+      {"id":1, "duplicated_id_list": ["3319a939","e5d83f75","146e7368","3d5d34b2"]},
+      {"id":2, "duplicated_id_list": ["48d5d099","78e403d2","db1ac4cd","ffbf3a8c"]}
+    ]
+  },
+  {
     "series_name":"窃心",
     "desc": "笨蛋捕快x心机小贼",
     "groups":[
       {"id":1, "duplicated_id_list": ["2f4ccabb", "bdc032b3", "39bf3367", "56e32527"]},
       {"id":2, "duplicated_id_list": ["f4a96dc1", "cf6243a9", "a54aa150"]}
+    ]
+  },
+  {
+    "series_name": "妖与仙",
+    "desc": "双重人格花妖x双重人格仙君(魔君)",
+    "cover": "http://i1.hdslb.com/bfs/archive/59c7ca6a0f192ec5b4cd2e8e23d5a11458e0ee55.jpg",
+    "groups":[
+      {"id": 1, "duplicated_id_list": ["737f3af2","357cba54","75aac5c0","825f8cd6"]},
+      {"id": 2, "duplicated_id_list": ["63149823","dca96cfc","a361c7ce","7875eca1"]},
+      {"id": 3, "duplicated_id_list": ["b626fee1","e79b1f53","29e3ab87","f22c5ea7"]},
+      {"id": 4, "duplicated_id_list": ["a1847a42","e9bd5888","7c33c02f","5c9d984b"]},
+      {"id": 5, "duplicated_id_list": ["16381c5c","ed07cb9f","decbd0ef","7951f977"]},
+      {"id": 6, "duplicated_id_list": ["25fb35db","b9115bb3","6e71d29e","396c8997"]}
+    ]
+  },
+  {
+    "series_name": "恶人组",
+    "desc": "美艳御姐反派x年下忠犬小狼狗",
+    "co_operators": "知竹zZ,锦超",
+    "cover": "http://i2.hdslb.com/bfs/archive/c6efb12d13af02062a6837ea22562d93e56950c4.jpg",
+    "groups":[
+      {"id": 1, "duplicated_id_list": ["c74e67be","cab1b73f","ff7a2580"]},
+      {"id": 2, "duplicated_id_list": ["4d96a018","576c885e"]},
+      {"id": 3, "duplicated_id_list": ["cb008fdd","07c4b240","15d6c49c","7faca19a"]},
+      {"id": 4, "duplicated_id_list": ["c1256cd3","acd36e31","d9c66205"]},
+      {"id": 5, "duplicated_id_list": ["cce804bf","ffd26dcf","786a033b","2df37088"]},
+      {"id": 6, "duplicated_id_list": ["b5effa37","3b294810","85264758"]},
+      {"id": 7, "duplicated_id_list": ["e4fabecd","b4ae8a90", "24d66681"]}
     ]
   },
   {
@@ -92,23 +150,6 @@
       {"id": 7, "duplicated_id_list": ["7f351845", "45466ede", "2461eba0"]},
       {"id": 8, "duplicated_id_list": ["f634caa8", "5d8a4d80"]},
       {"id": 9, "duplicated_id_list": ["decd5b44","66b56830", "5d50c616"]}
-    ]
-  },
-  {
-    "series_name": "替身文学",
-    "desc": "病娇阴鸷王爷x雪山圣女",
-    "co_operators": "锦超",
-    "cover": "http:\/\/i2.hdslb.com\/bfs\/archive\/0e112bb72fbfdea2d8a9731d1b6d007fbfc37a35.jpg",
-    "groups": [
-      {"id": 1, "duplicated_id_list": ["6e235b36"]},
-      {"id": 2, "duplicated_id_list": ["ad6d57af"]},
-      {"id": 3, "duplicated_id_list": ["806983df","9cd35342","eb45d53e","f3780e07"]},
-      {"id": 4, "duplicated_id_list": ["d49c734e","35061e4e","0c117e7e","d9d3d39c"]},
-      {"id": 5, "duplicated_id_list": ["fd2f4ab9", "ad647315","003ace99","8d226b73"]},
-      {"id": 6, "duplicated_id_list": ["84230b89","6c1fef80","5ed2c49d"]},
-      {"id": 7, "duplicated_id_list": ["989fd0f9", "16486f4a", "2db85740", "66d1acb9"]},
-      {"id": 8, "duplicated_id_list": ["c1253c0b", "5371b88b", "09eecf57", "fd96a2bb"]},
-      {"id": 9, "duplicated_id_list": ["bd1ee345","4f116e8d", "045f7402"]}
     ]
   },
   {
@@ -417,7 +458,7 @@
   },
   {
     "series_name": "月白之时",
-    "desc": "现代玄幻网络短剧。讲述了千年前，水族圣物“月光宝石”与泱海之主神汐一同消失，水族圣女 时月 踏入人类世界寻找它。在人界，她遇到了海洋馆馆长林白语与明恋林白语的安氏集团继承人安叙光。在复杂的三角关系与重重波折下，三人最终联手找到月光宝石，成功净化海洋环境",
+    "desc": "现代玄幻网络短剧。讲述了千年前，水族圣物“月光宝石”与泱海之主神汐一同消失，水族圣女时月（杨馥羽 饰）踏入人类世界寻找它。在人界，她遇到了海洋馆馆长林白语（圻夏夏 饰）与明恋林白语的安氏集团继承人安叙光（洋洋 饰）。在复杂的三角关系与重重波折下，三人最终联手找到月光宝石，成功净化海洋环境",
     "co_operators":"杨馥羽",
     "groups": [
       {
@@ -1060,7 +1101,7 @@
   },
   {
     "series_name": "东栏雪",
-    "desc": "古装微短剧,掌事宫女沈颜与不受宠的七皇子褚宁远,在复仇路上的互相辅佐与情感救赎。在冰冷世界中,两颗心逐渐走近",
+    "desc": "古装微短剧,掌事宫女沈颜（圻夏夏 饰）与不受宠的七皇子褚宁远（锦超 饰）,在复仇路上的互相辅佐与情感救赎。在冰冷世界中,两颗心逐渐走近",
     "co_operators": "知竹zZ,锦超,芝月",
     "groups": [
       {
