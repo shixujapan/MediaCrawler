@@ -1,5 +1,111 @@
 [
   {
+    "series_name": "结缘地",
+    "desc": "仙魔大战后,魔族统领和仙族统领的搞笑爱情故事",
+    "co_operators":"楚琪",
+    "cover": "http://i2.hdslb.com/bfs/archive/34c10cd15294584d360411e0700a57eb87556f81.jpg",
+    "groups":[
+      {"id":1, "duplicated_id_list": ["f5acf59a","307bf340", "83476061","e88d287b"], "remarks": ["抖音","B站","小红书","快手"]}
+    ]
+  },
+  {
+    "series_name": "龟裂(民国清汉女)",
+    "desc": "民国深宅大院里的爱恨情仇",
+    "co_operators":"团子Lazy,夫诸,杨英俊,陈瑜婕,千里明明,杨老麦,化妆师小青蛙,爱喵的风华",
+    "cover": "http://i0.hdslb.com/bfs/archive/8a408df77524a4e79ac8ab3bbd2252bfa7faefc5.jpg",
+    "groups": [
+      {"id":1, "duplicated_id_list": ["e053738e","83c21fce","4ee79dd0"], "remarks": ["抖音","B站","小红书"]},
+      {"id":2, "duplicated_id_list": ["4652a15a","6571c052","a0c6381b"], "remarks": ["抖音","B站", "快手"]},
+      {"id":3, "duplicated_id_list": ["2924c48a","5fe9c0e4","9707af42"], "remarks": ["抖音","小红书","快手"]},
+      {"id":4, "duplicated_id_list": ["51061ea6","7b7b9ecd"], "remarks": ["小红书","快手"]}
+    ],
+    "remarks": "id:2缺小红书"
+  },
+  {
+    "series_name": "湮灭",
+    "desc": "孪生妹妹因母妃阴谋而走散，哥哥以血与身份为代价为妹妹铺下皇权之路，留下她在爱与恨中化身“皇子”，踏入夺位争权的残酷宫廷",
+    "co_operators": "团子Lazy",
+    "cover": "http://i1.hdslb.com/bfs/archive/20925e62bb81c3e9e976edef68a50470986ca5a5.jpg",
+    "groups":[
+      {"id":1, "duplicated_id_list": ["ca99de5c"], "remarks": ["B站"]},
+      {"id":2, "duplicated_id_list": ["0566833a", "7bb664ef", "6cfc4739"], "remarks": ["B站", "小红书", "快手"]},
+      {"id":3, "duplicated_id_list": ["cb623195","05f52baf","39e3195f","748faafb"], "remarks": ["抖音","B站,预告", "小红书","快手"]}
+    ]
+  },
+  {
+    "series_name": "情深不悔",
+    "desc": "东方不败x雪千寻",
+    "cover": "http://i2.hdslb.com/bfs/archive/9470f2b62abddee1c58ba048bc2d79c4a4567b6f.jpg",
+    "co_operators":"妞妞妞",
+    "groups":[
+      {"id":1, "duplicated_id_list": ["fc76d03a","1966bb30", "8d7fd26a", "b93798f3"], "remarks": ["抖音","B站", "小红书", "快手"]},
+      {"id":2, "duplicated_id_list": ["8c7f0d65"], "remarks": ["快手,花絮"]},
+      {"id":3, "duplicated_id_list": ["09132de6"], "remarks": ["快手,竖屏"]}
+    ],
+    "remarks": "将来上传的时候考虑用B站的视频（音乐不同）,小红书君辞那里还有一版"
+  },
+  {
+    "series_name": "双A花魁",
+    "desc": "双A花魁,这次谁是猎物？",
+    "cover": "http://i0.hdslb.com/bfs/archive/aae5b01cdde105cf2379ddfa7e471dd1112d7f87.jpg",
+    "co_operators":"知竹zZ,圣微",
+    "groups":[
+      {"id":1, "duplicated_id_list": ["289b81b3","9fd0ace5","88bfff97"], "remarks": ["抖音","小红书","快手"]},
+      {"id":2, "duplicated_id_list": ["757216d5","3d802680","fcdaea8b"], "remarks": ["抖音","小红书","快手"]},
+      {"id":3, "duplicated_id_list": ["c5b8aef2"], "remarks": ["B站,横屏,加长版,无台词"]}
+    ],
+    "remarks": "知竹zZ(B站)圣微(B站)那里还有,其它平台不确定"
+  },
+  {
+    "series_name": "青蛇x白蛇",
+    "desc": "青蛇x白蛇",
+    "co_operators":"知竹zZ,圣微",
+    "cover":"http://i2.hdslb.com/bfs/archive/a286d70c454ddfd0e1f948c03802b76d6d4798f1.jpg",
+    "groups":[
+      {"id":1, "duplicated_id_list": ["869b1d7b","eaa96860","c7de3ab9","76a0f1e4"], "remarks": ["抖音","B站","小红书","快手"]},
+      {"id":2, "duplicated_id_list": ["43cf58d0","14e4375e","7788f8e3","485f269a"], "remarks": ["抖音","B站","小红书","快手"]}
+    ],
+    "remarks": "圣微(B站)那里还有,其它平台不确定（'糟了.......是雄黄','青白蛇动漫真人版'）"
+  },
+  {
+    "series_name": "梦幻西游手游系列",
+    "desc": "逍遥生x小狐狸/我的意中人是只猫/应龙x雷龙x女魃/金蝉子x蜘蛛精",
+    "cover": "http://i1.hdslb.com/bfs/archive/c256328c70083189954c4ceeb990a8f8a58694d7.jpg",
+    "co_operators":"锦超,楚淇",
+    "groups":[
+      {"id":1, "duplicated_id_list": ["4d815ee5"], "remarks": ["小红书"]},
+      {"id":2, "duplicated_id_list": ["045f7402","d72516e1","8c56bfad"], "remarks": ["抖音","B站", "小红书"]},
+      {"id":3, "duplicated_id_list": ["ebef2abd","48d7aba3","80a88d2d","ba3cfa95"], "remarks": ["抖音","B站","小红书","快手"]},
+      {"id":4, "duplicated_id_list": ["fee27c64","09bc849e","8fde015b","5539b5dd"], "remarks": ["抖音","B站","小红书","快手"]}
+    ],
+    "remarks": "锦超那里还有一部分:怨种情侣/有效脱单/极品前任"
+  },
+  {
+    "series_name": "百里安姝",
+    "desc": "深情狐君x痴情少女",
+    "co_operators": "锦超",
+    "cover": "http://i1.hdslb.com/bfs/archive/5f1d3eceab5d1d7c010c996f3f46e18245bf8ded.jpg",
+    "groups":[
+      {"id":1, "duplicated_id_list": ["70e127c0","c7de4a31","8f8f1510","e57e4935"], "remarks": ["抖音","B站","小红书"]},
+      {"id":2, "duplicated_id_list": ["1278c76c","2aa5bcab","d561a73e","093f247f"], "remarks": ["抖音","B站","小红书","快手"]},
+      {"id":3, "duplicated_id_list": ["017ced02","78fefb0c","283e2a95"], "remarks": ["抖音","B站","小红书"]}
+    ],
+    "remarks": "锦超那里可能还有"
+  },
+  {
+    "series_name": "孪生劫【欧莱雅】",
+    "desc": "腹黑王爷x双面杀手x哑巴小傻子",
+    "co_operators": "锦超",
+    "cover": "http://i1.hdslb.com/bfs/archive/64889b69f8380ffa6b3a04619a49ecc68fc6ea75.jpg",
+    "groups":[
+      {"id":1, "duplicated_id_list": ["772489c9","8bcbc130"], "remarks": ["抖音","B站"]},
+      {"id":2, "duplicated_id_list": ["8acfc161","44d22cca"], "remarks": ["抖音","B站"]},
+      {"id":3, "duplicated_id_list": ["5c80b9aa","f4e54248"], "remarks": ["抖音","B站"]},
+      {"id":4, "duplicated_id_list": ["5c4798dc","1024f2b4"], "remarks": ["抖音","B站"]}
+    ],
+    "remarks": "朵声那里有花絮"
+  },
+  {
     "series_name": "节日特辑",
     "desc":"中秋/兔年新春/牛年新春",
     "cover": "http://i0.hdslb.com/bfs/archive/be1e6d18170703814a70b2b145596a80d087f918.jpg",

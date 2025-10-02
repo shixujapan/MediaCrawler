@@ -44,7 +44,6 @@ python 03_generate_work_series.py \
 --outdir ../data
 
 
-
 python 05_add_main_with_relation_async.py \
 --main-db-id 2675e518-7e7c-8170-9a9e-c9ce100387bc  \
 --main-csv /Users/xu.shi/Downloads/圻夏夏/MediaCrawler/media_library/final/data/works.csv \
@@ -116,3 +115,12 @@ python3 /Users/xu.shi/Downloads/圻夏夏/MediaCrawler/media_library/final/scrip
   牛年新春（小红书题目:情人节快乐）缺少
   牛年新春花絮（知竹zZ）缺少
   https://www.bilibili.com/video/BV1tX4y1572g?spm_id_from=333.788.videopod.episodes&vd_source=4263153bf5d47a089cc902f4d360c509&p=2
+
+  {
+    "series_name": "圻夏夏x圣微",
+    "desc": "女侠过招",
+    "groups":[
+      {"id":1, "duplicated_id_list": ["87af07ae"], "remarks": ["B站"]}
+    ],
+    "remarks": ""
+  },
