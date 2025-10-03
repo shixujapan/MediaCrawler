@@ -1,5 +1,38 @@
 [
   {
+    "series_name": "蔓夭",
+    "desc": "本是师徒一场，她却在朝夕相伴中生了爱慕。然情深无望，终成心魔——一念成魔，只因爱而不得",
+    "co_operators": "洋洋",
+    "cover": "http://i1.hdslb.com/bfs/archive/b2eda4fc71d1dbf5fed7e585dc02a838ce55c350.jpg",
+    "groups": [
+      {"id":1, "duplicated_id_list": ["8524bfd7","745013ff","0e395d3c","4a3a2a35"], "remarks": ["抖音","B站","小红书","快手"]},
+      {"id":2, "duplicated_id_list": ["7cf933f9","d095ecb8", "c8fef99c"], "remarks": ["抖音","B站","快手"]}
+    ],
+    "remarks": "id:2缺小红书"
+  },
+  {
+    "series_name": "重生之师尊她黑化了",
+    "desc": "清冷师尊为护徒而死，觉醒的魔尊徒弟以魔气逆天相救。然而被唤醒的，却是师尊的另一面...",
+    "cover": "http://i0.hdslb.com/bfs/archive/7a3bbaaa38a57312d5d8d37d96bd1cee95865145.jpg",
+    "groups": [
+      {"id":1, "duplicated_id_list": ["acf1e399","df2c81de","2ebf5b38"], "remarks": ["抖音,知竹zZ","B站,圻夏夏","快手,知竹zZ"]},
+      {"id":2, "duplicated_id_list": ["225e35e3","29dc9da7"], "remarks": ["抖音,知竹zZ","快手,知竹zZ"]},
+      {"id":3, "duplicated_id_list": ["2a21596e","39cc3e38","4b5673b8"], "remarks": ["抖音","小红书","快手"]},
+      {"id":4, "duplicated_id_list": ["96b8d8df","9652ddc9","6c0a40be"], "remarks": ["抖音","小红书","快手"]},
+      {"id":5, "duplicated_id_list": ["449e2fbf","e469e3b3"], "remarks": ["抖音","快手"]}
+    ],
+    "remarks": "id:1正片,id:1缺小红书(知竹zZ),id:2缺小红书(知竹zZ),id:5缺小红书(知竹zZ)"
+  },
+  {
+    "series_name": "【水仙】自己爱上自己是一种什么样的体验？",
+    "desc": "懵懂花妖x小道士",
+    "cover": "http://i0.hdslb.com/bfs/archive/5415511c2e74deb34140e0e0c7751796996b8bec.jpg",
+    "groups": [
+      {"id":1, "duplicated_id_list": ["e551406a","4390dd25","6716dd93","3280461e"], "remarks": ["抖音","B站","小红书","快手"]},
+      {"id":2, "duplicated_id_list": ["6b1e69b5","dbe60640","c7bef5ff","470d6c68"], "remarks": ["抖音","B站","小红书","快手"]}
+    ]
+  },
+  {
     "series_name": "结缘地",
     "desc": "仙魔大战后,魔族统领和仙族统领的搞笑爱情故事",
     "co_operators":"楚琪",
