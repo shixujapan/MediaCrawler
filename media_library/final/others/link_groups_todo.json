@@ -22,7 +22,7 @@
     "series_name": "打戏合集",
     "desc": "超燃打戏合集",
     "co_operators": "",
-    "cover": "http://i0.hdslb.com/bfs/archive/bc3c27af90fa547e4c4346311800ea08b34849b8.jpg",
+    "cover": "",
     "groups": [
       {"id":1, "duplicated_id_list": ["1968400c","58a51caf"], "remarks": ["B站,打戏小合集(话那么多干嘛？接招就完事了)","快手"]},
       {"id":2, "duplicated_id_list": ["83ff57ef","c4ff3a0c"], "remarks": ["抖音,庄翰_Roya,红衣少女,室内打戏","快手"]},
@@ -42,8 +42,8 @@
   {
     "series_name": "民国爱情",
     "desc": "民国爱情十有九悲",
-    "co_operators": "白皓",
-    "cover": "http://i1.hdslb.com/bfs/archive/9b9a4e87890426eb0405189527c6560245f7fa7a.jpg",
+    "co_operators": "",
+    "cover": "",
     "groups": [
       {"id":1, "duplicated_id_list": ["edf893a8"], "remarks": ["抖音"]},
       {"id":2, "duplicated_id_list": ["72094eb7"], "remarks": ["B站,预告"]},
@@ -54,8 +54,8 @@
   {
     "series_name": "海洋馆记录",
     "desc": "可惜故事已经发生,可惜我无法改写(圻夏夏x圣微)",
-    "co_operators": "圣微",
-    "cover": "http://i2.hdslb.com/bfs/archive/5f5c45b3c12409953f6133294c65155af8fdfa55.jpg",
+    "co_operators": "",
+    "cover": "",
     "groups": [
       {"id":1, "duplicated_id_list": ["59502bfe"], "remarks": ["抖音"]},
       {"id":2, "duplicated_id_list": ["ce9b7d83","d4b4eed0","717a76ef","a32e6859"], "remarks": ["抖音","B站","小红书","快手"]},
@@ -65,9 +65,9 @@
   },
   {
     "series_name": "哥,带我回家吧",
-    "desc": "为国赴死,血洒疆场的兄妹",
+    "desc": "报效祖国祖国战死沙场的兄妹",
     "co_operators": "鹿荼白",
-    "cover": "http://i2.hdslb.com/bfs/archive/733a185839bae5f63a1233e2c6b841a55bd36d6d.jpg",
+    "cover": "",
     "groups": [
       {"id":1, "duplicated_id_list": ["849d05ad","cb612e35","d52c1761"], "remarks": ["抖音","B站","快手"]},
       {"id":2, "duplicated_id_list": ["0d03a0bf","d2190495","0ea251c5","0e496758"], "remarks": ["抖音","B站","小红书","快手"]},
@@ -81,7 +81,7 @@
     "series_name": "灭国公主x侍卫",
     "desc": "灭国公主和忠心守护她的侍卫的故事",
     "co_operators": "庄翰_Roya",
-    "cover": "http://i2.hdslb.com/bfs/archive/18e4b4739361a1708fae8338b3e57207793e1fa5.jpg",
+    "cover": "",
     "groups": [
       {"id":1, "duplicated_id_list": ["1a9ef507","804812fa"], "remarks": ["抖音","快手"]},
       {"id":2, "duplicated_id_list": ["3a943ae9","9332d55c","fa1fb157"], "remarks": ["抖音","B站","快手"]},
@@ -93,7 +93,7 @@
     "series_name": "白月光与朱砂痣",
     "desc": "穿越千年才找回跟你在一起的回忆(花西子广告)",
     "co_operators": "九井宴",
-    "cover": "http://i0.hdslb.com/bfs/archive/dd4212061c6c89e634c9e981b1ce7efb1e326825.jpg",
+    "cover": "",
     "groups": [
       {"id":1, "duplicated_id_list": ["c0764e3c"], "remarks": ["B站,完整版"]},
       {"id":2, "duplicated_id_list": ["89cbfaed","68db514e"], "remarks": ["抖音","快手"]},
@@ -106,7 +106,7 @@
     "series_name": "小阿花",
     "desc": "小阿花仿妆",
     "co_operators": "",
-    "cover": "http://i0.hdslb.com/bfs/archive/ca334f68b64ce572b9480c6bac82036108acb6a9.jpg",
+    "cover": "",
     "groups": [
       {"id":1, "duplicated_id_list": ["db8b737d","8dc5c702"], "remarks": ["抖音","快手"]},
       {"id":2, "duplicated_id_list": ["32d1a168","e9460dc0"], "remarks": ["抖音","快手"]},
@@ -118,9 +118,9 @@
   },
   {
     "series_name": "别怕,以后有我",
-    "desc": "被命运作弄的青梅竹马,一人成臣,一人入宫。在权势与命运的漩涡中,他们的情意成了最深的枷锁。",
+    "desc": "",
     "co_operators": "爱野超有味",
-    "cover": "http://i2.hdslb.com/bfs/archive/5bd37d5593c072d2d0d82fe0f39ccce993b8d772.jpg",
+    "cover": "",
     "groups": [
       {"id":1, "duplicated_id_list": ["21013adb","3dcfd9fa","ef970cbd","2fa601b5"], "remarks": ["抖音","B站","小红书","快手"]}
     ],
@@ -130,13 +130,241 @@
     "series_name": "巾帼让须眉",
     "desc": "当调皮女学生与古板教书先生灵魂互换后...",
     "co_operators": "小全",
-    "cover": "http://i2.hdslb.com/bfs/archive/8a6bb3d39f909ea49a965360aa577eef2bf8925a.jpg",
+    "cover": "",
     "groups": [
       {"id":1, "duplicated_id_list": ["3bf44439","406b620c","0efa5a72"], "remarks": ["抖音","B站","小红书"]},
       {"id":2, "duplicated_id_list": ["a1981d19","0ec5665a","4302113f","683b396c"], "remarks": ["抖音","B站","小红书","快手"]},
       {"id":3, "duplicated_id_list": ["2f692b43","e0b4a12d","8690de72","2f1258dc"],"remarks":["抖音","B站","小红书","快手"]}
     ],
     "remarks": "id:1缺快手"
+  },
+  {
+    "series_name": "林帮主与冒牌女"
+  },
+  {
+    "series_name": "殊途",
+    "desc": "",
+    "co_operators": "",
+    "cover": "http://i2.hdslb.com/bfs/archive/491e67ece3c84fa670704fbe8ee6c6e807d80ecd.jpg",
+    "groups": [
+      {"id":1, "duplicated_id_list": ["692f3cd2"], "remarks": ["B站"]},
+      {"id":2, "duplicated_id_list": ["09c08758"], "remarks": ["B站"]},
+      {"id":3, "duplicated_id_list": ["5aa76fd2"], "remarks": ["B站"]},
+      {"id":4, "duplicated_id_list": ["7487f5fc"], "remarks": ["B站"]},
+      {"id":5, "duplicated_id_list": ["36afb096"], "remarks": ["B站"]},
+      {"id":6, "duplicated_id_list": ["95637520"], "remarks": ["B站"]}
+
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "一些小短篇(圻夏夏x庄翰)",
+    "desc": "",
+    "co_operators": "",
+    "cover": "",
+    "groups": [
+      {"id":1, "duplicated_id_list": [""], "remarks": [""]},
+      {"id":2, "duplicated_id_list": [""], "remarks": [""]}
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "容音",
+    "desc": "",
+    "co_operators": "",
+    "cover": "",
+    "groups": [
+      {"id":1, "duplicated_id_list": [""], "remarks": [""]},
+      {"id":2, "duplicated_id_list": [""], "remarks": [""]}
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "神仙姐姐,我们交个朋友吧",
+    "desc": "双女主,九尾狐x小侍女,阿道夫「神兽山海经」茶麸洗护限定礼盒广告",
+    "co_operators": "莉莉",
+    "cover": "",
+    "groups": [
+      {"id":1, "duplicated_id_list": [""], "remarks": [""]},
+      {"id":2, "duplicated_id_list": [""], "remarks": [""]}
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "三生三世",
+    "desc": "双女主,神兽白泽x小侍女,阿道夫「神兽山海经」茶麸洗护限定礼盒",
+    "co_operators": "",
+    "cover": "",
+    "groups": [
+      {"id":1, "duplicated_id_list": [""], "remarks": [""]},
+      {"id":2, "duplicated_id_list": [""], "remarks": [""]}
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "夏日甜剧|芙清",
+    "desc": "一个黑帮老大为爱成奴的小故事",
+    "co_operators": "",
+    "cover": "",
+    "groups": [
+      {"id":1, "duplicated_id_list": [""], "remarks": [""]},
+      {"id":2, "duplicated_id_list": [""], "remarks": [""]}
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "憨憨徒弟和美貌师傅",
+    "desc": "双女主",
+    "co_operators": "爱野超有味",
+    "cover": "",
+    "groups": [
+      {"id":1, "duplicated_id_list": [""], "remarks": [""]},
+      {"id":2, "duplicated_id_list": [""], "remarks": [""]}
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "双世",
+    "desc": "前世今生殉情组(逃婚小王爷x殉情恋人),冰希黎香水广告",
+    "co_operators": "锦超",
+    "cover": "",
+    "groups": [
+      {"id":1, "duplicated_id_list": [""], "remarks": [""]},
+      {"id":2, "duplicated_id_list": [""], "remarks": [""]}
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "双向暗恋",
+    "desc": "钓系江湖侠客x主动邻家渔女",
+    "co_operators": "",
+    "cover": "",
+    "groups": [
+      {"id":1, "duplicated_id_list": [""], "remarks": [""]},
+      {"id":2, "duplicated_id_list": [""], "remarks": [""]}
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "双a互撩组",
+    "desc": "花西子唇纱",
+    "co_operators": "",
+    "cover": "",
+    "groups": [
+      {"id":1, "duplicated_id_list": [""], "remarks": [""]},
+      {"id":2, "duplicated_id_list": [""], "remarks": [""]}
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "平行世界现代组",
+    "desc": "温柔学姐x乖巧学弟,RENO7手机",
+    "co_operators": "",
+    "cover": "",
+    "groups": [
+      {"id":1, "duplicated_id_list": [""], "remarks": [""]},
+      {"id":2, "duplicated_id_list": [""], "remarks": [""]}
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "三人行",
+    "desc": "洒脱随性师姐x单纯懵懂学弟",
+    "co_operators": "",
+    "cover": "",
+    "groups": [
+      {"id":1, "duplicated_id_list": [""], "remarks": [""]},
+      {"id":2, "duplicated_id_list": [""], "remarks": [""]}
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "苗疆情人蛊",
+    "desc": "",
+    "co_operators": "",
+    "cover": "",
+    "groups": [
+      {"id":1, "duplicated_id_list": [""], "remarks": [""]},
+      {"id":2, "duplicated_id_list": [""], "remarks": [""]}
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "永远在一起",
+    "desc": "",
+    "co_operators": "",
+    "cover": "",
+    "groups": [
+      {"id":1, "duplicated_id_list": [""], "remarks": [""]},
+      {"id":2, "duplicated_id_list": [""], "remarks": [""]}
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "九世轮回",
+    "desc": "",
+    "co_operators": "",
+    "cover": "",
+    "groups": [
+      {"id":1, "duplicated_id_list": [""], "remarks": [""]},
+      {"id":2, "duplicated_id_list": [""], "remarks": [""]}
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "壁咚吻",
+    "desc": "",
+    "co_operators": "",
+    "cover": "",
+    "groups": [
+      {"id":1, "duplicated_id_list": [""], "remarks": [""]},
+      {"id":2, "duplicated_id_list": [""], "remarks": [""]}
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "十里樱花",
+    "desc": "",
+    "co_operators": "",
+    "cover": "",
+    "groups": [
+      {"id":1, "duplicated_id_list": [""], "remarks": [""]},
+      {"id":2, "duplicated_id_list": [""], "remarks": [""]}
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "中世纪西欧风",
+    "desc": "",
+    "co_operators": "",
+    "cover": "",
+    "groups": [
+      {"id":1, "duplicated_id_list": [""], "remarks": [""]},
+      {"id":2, "duplicated_id_list": [""], "remarks": [""]}
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "朝鲜服饰",
+    "desc": "",
+    "co_operators": "",
+    "cover": "",
+    "groups": [
+      {"id":1, "duplicated_id_list": [""], "remarks": [""]},
+      {"id":2, "duplicated_id_list": [""], "remarks": [""]}
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "",
+    "desc": "海芙谜",
+    "co_operators": "",
+    "cover": "",
+    "groups": [
+      {"id":1, "duplicated_id_list": [""], "remarks": [""]},
+      {"id":2, "duplicated_id_list": [""], "remarks": [""]}
+    ],
+    "remarks": ""
   },
   {
     "series_name": "下辈子吧",
