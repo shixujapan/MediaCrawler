@@ -13,7 +13,7 @@
       {"id":6, "duplicated_id_list": ["56bff6b3","19a3a8f1","309cdd35","5a799bc6"], "remarks": ["抖音","B站","小红书","快手"]},
       {"id":7, "duplicated_id_list": ["dd6eea3c","e53e85fb","c4397bbf"], "remarks": ["抖音","B站","小红书"]},
       {"id":8, "duplicated_id_list": ["b9f35409","60e569f1","ba139edb"], "remarks": ["抖音","B站","小红书"]},
-      {"id":9, "duplicated_id_list": ["b7e6425a"], "remarks": ["抖音"]},
+      {"id":9, "duplicated_id_list": ["b7e6425a","bbb460d6","efc1ae5e"], "remarks": ["抖音","小红书","快手"]},
       {"id":10, "duplicated_id_list": ["fd36a947","54baee18","8cac07d5"], "remarks": ["抖音","小红书","快手"]}
     ],
     "remarks": "id:1知竹或者知竹工作室那里还有,id:3团子抖音那里还有,id:8别的地方还有花絮"
@@ -137,6 +137,260 @@
       {"id":3, "duplicated_id_list": ["2f692b43","e0b4a12d","8690de72","2f1258dc"],"remarks":["抖音","B站","小红书","快手"]}
     ],
     "remarks": "id:1缺快手"
+  },
+  {
+    "series_name": "林帮主与冒牌女",
+    "desc": "双女主,武功高强的林帮主在查明真相的过程中，与冒充她的少女展开了一连串啼笑皆非的故事",
+    "co_operators": "",
+    "cover": "http://i2.hdslb.com/bfs/archive/fd7a468626f19f37bf1607934ac531e90bdbc8e0.jpg",
+    "groups":[
+      {"id":1, "duplicated_id_list": ["8f75f10d"], "remarks": ["B站"]},
+      {"id":2, "duplicated_id_list": ["dfe35414"], "remarks": ["B站"]},
+      {"id":3, "duplicated_id_list": ["feb8a740"], "remarks": ["B站"]},
+      {"id":4, "duplicated_id_list": ["5c953811"], "remarks": ["B站"]},
+      {"id":5, "duplicated_id_list": ["bcc516fe"], "remarks": ["B站"]},
+      {"id":6, "duplicated_id_list": ["ac8ebbd3"], "remarks": ["B站"]},
+      {"id":7, "duplicated_id_list": ["876f567d"], "remarks": ["B站"]},
+      {"id":8, "duplicated_id_list": ["4d0eed7a"], "remarks": ["B站"]},
+      {"id":9, "duplicated_id_list": ["a562d5ae"], "remarks": ["B站"]}
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "殊途",
+    "desc": "",
+    "co_operators": "",
+    "cover": "http://i2.hdslb.com/bfs/archive/491e67ece3c84fa670704fbe8ee6c6e807d80ecd.jpg",
+    "groups": [
+      {"id":1, "duplicated_id_list": ["692f3cd2"], "remarks": ["B站"]},
+      {"id":2, "duplicated_id_list": ["09c08758"], "remarks": ["B站"]},
+      {"id":3, "duplicated_id_list": ["5aa76fd2"], "remarks": ["B站"]},
+      {"id":4, "duplicated_id_list": ["7487f5fc"], "remarks": ["B站"]},
+      {"id":5, "duplicated_id_list": ["36afb096"], "remarks": ["B站"]},
+      {"id":6, "duplicated_id_list": ["95637520"], "remarks": ["B站"]}
+
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "一些小短篇合集(圻夏夏x庄翰_Roya)",
+    "desc": "一些小短篇合集(圻夏夏x庄翰_Roya)",
+    "co_operators": "庄翰_Roya",
+    "cover": "http://i1.hdslb.com/bfs/archive/09583e61301e416c4285a0522d11c0c72b583f57.jpg",
+    "groups": [
+      {"id":1, "duplicated_id_list": ["607943b2","9d46470f"], "remarks": ["抖音","快手"]},
+      {"id":2, "duplicated_id_list": ["21c24dc6","fd1c590c"], "remarks": ["抖音","快手"]},
+      {"id":3, "duplicated_id_list": ["828e1b56"], "remarks": ["B站,完整版"]},
+      {"id":4, "duplicated_id_list": ["b805b397","9dbfac40"], "remarks": ["抖音","快手"]},
+      {"id":5, "duplicated_id_list": ["b9f3ec43"], "remarks": ["B站,完整版"]},
+      {"id":6, "duplicated_id_list": ["a90e4b8e","befdf8a7","a864b718","23f68426"],"remarks": ["抖音","B站","小红书","快手"]},
+      {"id":7, "duplicated_id_list": ["5fb37c9b","26962634","4261098a"],"remarks": ["抖音","小红书","快手"]},
+      {"id":8, "duplicated_id_list": ["28622873","fd97b1b4"],"remarks": ["小红书","快手"]}
+    ],
+    "remarks": "id:1缺小红书,id:2缺小红书"
+  },
+  {
+    "series_name": "音容",
+    "desc": "双女主,花魁与女扮男装的贵公子的一段悲剧情缘",
+    "co_operators": "",
+    "cover": "http://i1.hdslb.com/bfs/archive/c857b76a33d0dedaef8bc927c353294e80cb6e47.jpg",
+    "groups": [
+      {"id":1, "duplicated_id_list": ["5190b40d"], "remarks": ["抖音"]},
+      {"id":2, "duplicated_id_list": ["172ec0f5"], "remarks": ["B站"]}
+    ],
+    "remarks": "正片在池夏汉服"
+  },
+  {
+    "series_name": "三生三世",
+    "desc": "双女主,神兽白泽x类/九尾狐x小白兔/现代,阿道夫「神兽山海经」茶麸洗护限定礼盒广告",
+    "co_operators": "莉莉",
+    "cover": "http://i1.hdslb.com/bfs/archive/4a9e420200ef3dabe7a3f8302852abf09701db4b.jpg",
+    "groups": [
+      {"id":1, "duplicated_id_list": ["41d85833"], "remarks": ["B站,完整版"]},
+      {"id":2, "duplicated_id_list": ["05e2d994","dda70839","e9aa8b4e"], "remarks": ["抖音","B站","快手"]},
+      {"id":3, "duplicated_id_list":["31e33697","4c4046d2","b284057b","1dbd0476","37ff45c4"],"remarks": ["抖音,横版","B站,横版","抖音,竖版","快手","快手"]},
+      {"id":4, "duplicated_id_list":["bee92831"],"remarks": ["B站"]}
+    ],
+    "remarks": "id:1B站流云蕊那里还有一版,三个故事的顺序不太一样,id:2缺小红书(以后我陪着你吧!),id:3缺小红书(既然迷路了,那以后就陪着我吧/抓到一只小白兔)"
+  },
+  {
+    "series_name": "芙清",
+    "desc": "一个黑帮老大为爱成奴的小故事",
+    "co_operators": "",
+    "cover": "http://i0.hdslb.com/bfs/archive/6027ce5e24da606f3d6f17a79b56024a56746ece.jpg",
+    "groups": [
+      {"id":1, "duplicated_id_list": ["658ac9d8","ae821458","bd91bd17","4c9d8b10"], "remarks": ["抖音","B站","小红书","快手"]},
+      {"id":2, "duplicated_id_list": ["1224f525","40caec71"], "remarks": ["B站","小红书"]},
+      {"id":3, "duplicated_id_list": ["74cd5202","b25c8c92"], "remarks": ["小红书","快手"]}
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "笨徒弟想撩师傅",
+    "desc": "双女主,憨憨徒弟x美貌师傅",
+    "co_operators": "爱野超有味",
+    "cover": "http://i2.hdslb.com/bfs/archive/ebc438c203272178f3a2d05768fa736a7392af78.jpg",
+    "groups": [
+      {"id":1, "duplicated_id_list": ["54190452"], "remarks": ["B站,完整版"]},
+      {"id":2, "duplicated_id_list": ["37764ffc","7b9245cf","edc0e9f8"], "remarks": ["抖音","小红书","快手"]},
+      {"id":3, "duplicated_id_list": ["85e28a37"],"remarks": ["快手"]}
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "双世",
+    "desc": "前世今生殉情组(逃婚小王爷x殉情恋人),冰希黎香水广告",
+    "co_operators": "锦超",
+    "cover": "http://i0.hdslb.com/bfs/archive/f2e3212f424b14b45e7ecd9c33c8371f1e9e7dd9.jpg",
+    "groups": [
+      {"id":1, "duplicated_id_list": ["a7c0c5df","69d860d6","5459e565","991f5e13"], "remarks": ["抖音","B站","小红书","快手"]}
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "纸短情长",
+    "desc": "双向暗恋,钓系江湖侠客x主动邻家渔女",
+    "co_operators": "",
+    "cover": "http://i2.hdslb.com/bfs/archive/c91163bbd567eda736f307502a95a1024622ed37.jpg",
+    "groups": [
+      {"id":1, "duplicated_id_list": ["0af57836","fb451466","e87cd7b4","6e2324f5"], "remarks": ["抖音","B站","小红书","快手"]}
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "平行时空",
+    "desc": "温柔学姐x乖巧学弟,我相信无论在哪个时空,我们终究会相爱,RENO7手机广告",
+    "co_operators": "",
+    "cover": "http://i0.hdslb.com/bfs/archive/acd1adc124107e9d872c43ae4ed392c6c40b6701.jpg",
+    "groups": [
+      {"id":1, "duplicated_id_list": ["9591f546"], "remarks": ["B站"]},
+      {"id":2, "duplicated_id_list": ["4859fa59","d4111f66","4acd98c3"], "remarks": ["抖音","小红书","快手"]}
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "三人行",
+    "desc": "洒脱随性师姐x单纯懵懂学弟",
+    "co_operators": "",
+    "cover": "http://i0.hdslb.com/bfs/archive/a864e94fc8d6858ec40d1030ed200b1ca201084a.jpg",
+    "groups": [
+      {"id":1, "duplicated_id_list": ["238dcba5","ee875dba","5914b309","50065f58"], "remarks": ["抖音","B站","小红书","快手"]}
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "苗疆情人蛊",
+    "desc": "温润清俊苗疆少年x美艳蛊师/娇憨少女",
+    "co_operators": "",
+    "cover": "http://i0.hdslb.com/bfs/archive/5459ca2a2af20963e3349d518cb5b8abc5010542.jpg",
+    "groups": [
+      {"id":1, "duplicated_id_list": ["95aaf826","91a44aca","1905b884","c38b6a9d"], "remarks": ["抖音","B站","小红书","快手"]},
+      {"id":2, "duplicated_id_list": ["9d9c01fb","45db4a9a","06e66282","4bd39f46"], "remarks": ["抖音","B站","小红书","快手"]},
+      {"id":3, "duplicated_id_list": ["7e024c51","b6d3f1a5","8edd9e19","7d6d6124"], "remarks": ["抖音","B站","小红书","快手"]}
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "生世",
+    "desc": "九世轮回,炼药师x山灵/少主x暗卫/现代邻居,Dior广告",
+    "co_operators": "",
+    "cover": "http://i1.hdslb.com/bfs/archive/dc273eb779aec02f7b4d7c06e381507b3b2ae747.jpg",
+    "groups": [
+      {"id":1, "duplicated_id_list": ["6160510b","2e635718","550e4951","d95692bf"], "remarks": ["抖音","B站","小红书","快手"]}
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "十里樱花",
+    "desc": "山神洛桑x恶神阿七",
+    "co_operators": "",
+    "cover": "http://i0.hdslb.com/bfs/archive/51d92470339a490f183a23d35309029792317e9d.jpg",
+    "groups": [
+      {"id":1, "duplicated_id_list": ["75bdbf9f","f095cdde","a7039ae0","2dcf9bef"], "remarks": ["抖音","B站","小红书","快手"]}
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "艳鬼x驱魔师",
+    "desc": "把你永世关在这个棺材里，可能有点太残忍了",
+    "co_operators": "",
+    "cover": "",
+    "groups": [
+      {"id":1, "duplicated_id_list": ["6d2fe487"], "remarks": ["小红书"]}
+    ],
+    "remarks": "朵声那里还有"
+  },
+  {
+    "series_name": "朝鲜服饰",
+    "desc": "我们就停在此刻吧,万般圆满,已是最好的结尾",
+    "co_operators": "",
+    "cover": "http://i1.hdslb.com/bfs/archive/aac122e7a2058d1e294570802a9eb24374b56c05.jpg",
+    "groups": [
+      {"id":1, "duplicated_id_list": ["db63289b","2fddc419","09f821dc","2fc78b64"], "remarks": ["抖音","B站","小红书","快手"]},
+      {"id":2, "duplicated_id_list": ["71ba1ef1","ad95d5f6"], "remarks": ["抖音","快手"]}
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "从来都只有自己才能拯救自己",
+    "desc": "海芙谜广告",
+    "co_operators": "",
+    "cover": "http://i2.hdslb.com/bfs/archive/a22b3e136adf00e5ba09c43e0c88c570a3a5dd8c.jpg",
+    "groups": [
+      {"id":1, "duplicated_id_list": ["ab90400f","024dd639","78f0cd73"], "remarks": ["抖音","B站","小红书"]}
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "山妖x灵族后裔",
+    "desc": "缘这种东西一旦结下了,可就再也解不开了",
+    "co_operators": "小全",
+    "cover": "",
+    "groups": [
+      {"id":1, "duplicated_id_list": ["daf2d4c5"], "remarks": ["抖音"]}
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "守候",
+    "desc": "等的人总会回来的,在梦里或者在心里",
+    "cover": "",
+    "groups": [
+      {"id":1, "duplicated_id_list": ["66f4c587","a6853d15"], "remarks": ["抖音","小红书"]}
+    ]
+  },
+  {
+    "series_name": "三兔香膏小甜饼",
+    "desc": "颜控撩汉大姐姐x纯情可爱小奶狗",
+    "cover": "",
+    "groups":[
+      {"id":1, "duplicated_id_list": ["37a1da24","11574d6b","6e9a9d0e","040d0dcd"],"remarks":["抖音","B站","小红书","快手"]},
+      {"id":1, "duplicated_id_list": ["c842f733","7ee3e5a2","1fc47dda","a41b0e0c"],"remarks":["抖音","B站","小红书","快手"]},
+      {"id":1, "duplicated_id_list": ["80592f13","57beefcd","5144b4e5","42bfe6ae"],"remarks":["抖音","B站","小红书","快手"]},
+      {"id":1, "duplicated_id_list": ["5e5d59fb","386f342a","4eca453f","296087a6"],"remarks":["抖音","B站","小红书","快手"]},
+      {"id":1, "duplicated_id_list": ["7891da3c","b220108a","53578637","d19ea456"],"remarks":["抖音","B站","小红书","快手"]},
+      {"id":1, "duplicated_id_list": ["7b86ff11","86b9571c","7c8704be","c5d4e794"],"remarks":["抖音","B站","小红书","快手"]},
+      {"id":1, "duplicated_id_list": ["e523bdc7","65c35529","b6dfb81e","1069556f"],"remarks":["抖音","B站","小红书","快手"]}
+    ],
+    "remarks": ""
+  },
+  {
+    "series_name": "一场为月经污名化的平反",
+    "desc": "本就没什么不洁污秽,愿大家都能坦然对待,勇破偏见",
+    "cover": "",
+    "groups":[
+      {"id":1, "duplicated_id_list": ["f1ccd21d","878956f8","860d58a9","161e2cee"],"remarks":["抖音","B站","小红书","快手"]}
+    ]
+  },
+  {
+    "series_name": "宿命",
+    "desc": "为何要做棋子,我要做执棋之人",
+    "co_operators": "玖柯9k",
+    "cover": "",
+    "groups": [
+      {"id": 1, "duplicated_id_list": ["1e4503e0","5766b7c6","a19eed28","33f62d40"], "remarks":["抖音","B站","小红书","快手"]},
+      {"id": 2, "duplicated_id_list": ["bb3d02be","b7abe595","8d960236","4c390031"], "remarks":["抖音","B站","小红书","快手"]}
+    ]
   },
   {
     "series_name": "下辈子吧",
@@ -443,21 +697,23 @@
     ]
   },
   {
-    "series_name": "母爱变质养成系【YSL】",
-    "desc": "永生洒脱女长老x心机年下小奶狗",
+    "series_name": "母爱变质养成系",
+    "desc": "永生洒脱女长老x心机年下小奶狗,YSL广告",
     "co_operators": "锦超",
     "cover": "http:\/\/i2.hdslb.com\/bfs\/archive\/3b9c55fa0d2471f764fa4337eafaa28ed866926f.jpg",
     "groups": [
-      {"id": 1, "duplicated_id_list": ["e6917dc7"]},
-      {"id": 2, "duplicated_id_list": ["f4b8eb4d"]},
-      {"id": 3, "duplicated_id_list": ["ac20c0b9"]},
-      {"id": 4, "duplicated_id_list": ["a1fa4e09"]},
-      {"id": 5, "duplicated_id_list": ["c5416a02"]},
-      {"id": 6, "duplicated_id_list": ["4e5af458","52a1ced4","6f79afe8"]},
-      {"id": 7, "duplicated_id_list": ["7f351845", "45466ede", "2461eba0"]},
-      {"id": 8, "duplicated_id_list": ["f634caa8", "5d8a4d80"]},
-      {"id": 9, "duplicated_id_list": ["decd5b44","66b56830", "5d50c616"]}
-    ]
+      {"id": 1, "duplicated_id_list": ["c4fa518a","e6917dc7","c929d603","a21ebde9"],"remarks": ["抖音","B站","小红书","快手"]},
+      {"id": 2, "duplicated_id_list": ["057785fb","f4b8eb4d","e5d31e0a","bd29641b"],"remarks": ["抖音","B站","小红书","快手"]},
+      {"id": 3, "duplicated_id_list": ["1fc3d627","ac20c0b9","de244d0a","242f3b31"],"remarks": ["抖音","B站","小红书","快手"]},
+      {"id": 4, "duplicated_id_list": ["446c3d9f","a1fa4e09","67cd8535","0989c823"],"remarks": ["抖音","B站","小红书","快手"]},
+      {"id": 5, "duplicated_id_list": ["41e5b04e","c5416a02","13b1e644","069d4933"],"remarks": ["抖音","B站","小红书","快手"]},
+      {"id": 6, "duplicated_id_list": ["6f79afe8","4e5af458","7a7969d0","52a1ced4"],"remarks": ["抖音","B站","小红书","快手"]},
+      {"id": 7, "duplicated_id_list": ["2461eba0","7f351845","93a5c754","45466ede"],"remarks": ["抖音","B站","小红书","快手"]},
+      {"id": 8, "duplicated_id_list": ["5d8a4d80","f634caa8","76f88d49"],"remarks": ["抖音","B站","小红书"]},
+      {"id": 9, "duplicated_id_list": ["5d50c616","decd5b44","d08dcc5a","66b56830"],"remarks": ["抖音","B站","小红书"]},
+      {"id": 10, "duplicated_id_list": ["b569ed60"],"remarks": ["抖音"]}
+    ],
+    "remarks": "id:8缺快手(解锁隐藏剧情)"
   },
   {
     "series_name": "替身文学",
